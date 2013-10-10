@@ -7,13 +7,14 @@
 //
 
 #import "HomeViewController.h"
-#import "MicroViewController.h"
-#import "PressioneViewController.h"
-#import "NormaleViewController.h"
+
 #import "SearchViewController.h"
 #import "GNWheelView.h"
 #import "GNWheelViewController.h"
 
+#import "MicroViewController.h"
+#import "PressioneViewController.h"
+#import "NormaleViewController.h"
 @interface HomeViewController ()
 
 @end
@@ -36,6 +37,26 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)pressionePushed:(UIButton*)sender {
+    
+    
+    //PressioneViewController *pressione = [self.storyboard instantiateViewControllerWithIdentifier:@"Pressione"];
+    GNWheelViewController *wheel = [self.storyboard instantiateViewControllerWithIdentifier:@"Wheel"];
+    wheel.title = [sender currentTitle];
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.6;
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromLeft;
+    
+    
+    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+    [self.navigationController pushViewController:wheel animated:NO];
+    
+}
+
+
+
 - (IBAction)microPushed:(id)sender {
     
     MicroViewController *micro = [self.storyboard instantiateViewControllerWithIdentifier:@"Micro"];
@@ -46,22 +67,6 @@
     
     [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
     [self.navigationController pushViewController:micro animated:NO];
-}
-- (IBAction)pressionePushed:(UIButton*)sender {
-    
-
-    //PressioneViewController *pressione = [self.storyboard instantiateViewControllerWithIdentifier:@"Pressione"];
-    GNWheelViewController *wheel = [self.storyboard instantiateViewControllerWithIdentifier:@"Wheel"];
-    wheel.title = [sender currentTitle];
-    CATransition* transition = [CATransition animation];
-    transition.duration = 0.6;
-    transition.type = kCATransitionPush;
-    transition.subtype = kCATransitionFromLeft;
-    
-
-    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-    [self.navigationController pushViewController:wheel animated:NO];
-    
 }
 - (IBAction)normalePushed:(id)sender {
     
@@ -76,16 +81,14 @@
 }
 
 -(void)swipeSearched:(UISwipeGestureRecognizer*)sender{
-    NSLog(@"a");
     
     SearchViewController *sv = [self.storyboard instantiateViewControllerWithIdentifier:@"Search"];
     CATransition* transition = [CATransition animation];
     transition.duration = 0.6;
     transition.type = kCATransitionPush;
     transition.subtype = kCATransitionFromBottom;
-    
     [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-    sv.tableView.alpha = 1.f;
+    
     [self.navigationController pushViewController:sv animated:NO];
 
 }

@@ -10,7 +10,6 @@
 		D10B9CCD1804A5E900958B59 /* NormaleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D10B9CCC1804A5E900958B59 /* NormaleViewController.m */; };
 		D10B9CCF1804A8DA00958B59 /* SecondStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D10B9CCE1804A8DA00958B59 /* SecondStoryboard.storyboard */; };
 		D10B9CD51804A93600958B59 /* ListaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D10B9CD41804A93600958B59 /* ListaTableViewController.m */; };
-		D12FA8F518041B440047B5AC /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D12FA8F418041B440047B5AC /* MainStoryboard.storyboard */; };
 		D12FA8F818041BA50047B5AC /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D12FA8F718041BA50047B5AC /* HomeViewController.m */; };
 		D12FA8FB18041CC10047B5AC /* PressioneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D12FA8FA18041CC10047B5AC /* PressioneViewController.m */; };
 		D12FA8FE18041F200047B5AC /* MicroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D12FA8FD18041F200047B5AC /* MicroViewController.m */; };
@@ -35,6 +34,7 @@
 		D1B17A64180339D60067B32D /* CuociTempoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B17A63180339D60067B32D /* CuociTempoTests.m */; };
 		D1F3C1801806D34B00BF5DD5 /* GNWheelView.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F3C17D1806D34B00BF5DD5 /* GNWheelView.m */; };
 		D1F3C1811806D34B00BF5DD5 /* GNWheelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F3C17F1806D34B00BF5DD5 /* GNWheelViewController.m */; };
+		D1F3C1831806D74A00BF5DD5 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1F3C1821806D74A00BF5DD5 /* MainStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +53,6 @@
 		D10B9CCE1804A8DA00958B59 /* SecondStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SecondStoryboard.storyboard; sourceTree = "<group>"; };
 		D10B9CD31804A93600958B59 /* ListaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListaTableViewController.h; sourceTree = "<group>"; };
 		D10B9CD41804A93600958B59 /* ListaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListaTableViewController.m; sourceTree = "<group>"; };
-		D12FA8F418041B440047B5AC /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		D12FA8F618041BA50047B5AC /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		D12FA8F718041BA50047B5AC /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		D12FA8F918041CC10047B5AC /* PressioneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PressioneViewController.h; sourceTree = "<group>"; };
@@ -88,6 +87,7 @@
 		D1F3C17D1806D34B00BF5DD5 /* GNWheelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNWheelView.m; sourceTree = "<group>"; };
 		D1F3C17E1806D34B00BF5DD5 /* GNWheelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNWheelViewController.h; sourceTree = "<group>"; };
 		D1F3C17F1806D34B00BF5DD5 /* GNWheelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNWheelViewController.m; sourceTree = "<group>"; };
+		D1F3C1821806D74A00BF5DD5 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +129,8 @@
 		D10B9CD71804A95000958B59 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				D12FA8F418041B440047B5AC /* MainStoryboard.storyboard */,
 				D10B9CCE1804A8DA00958B59 /* SecondStoryboard.storyboard */,
+				D1F3C1821806D74A00BF5DD5 /* MainStoryboard.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -329,8 +329,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D12FA8F518041B440047B5AC /* MainStoryboard.storyboard in Resources */,
 				D1ADCFE018055E4300B330E2 /* cuocitempo.jpg in Resources */,
+				D1F3C1831806D74A00BF5DD5 /* MainStoryboard.storyboard in Resources */,
 				D1B17A45180339D60067B32D /* InfoPlist.strings in Resources */,
 				D1B17A50180339D60067B32D /* Images.xcassets in Resources */,
 				D10B9CCF1804A8DA00958B59 /* SecondStoryboard.storyboard in Resources */,

@@ -84,14 +84,6 @@
     }
 }
 
--(void)goToListaFrom:(GNWheelView *)wheelView{
-    
-    ListaTableViewController *lista = [[UIStoryboard storyboardWithName:@"SecondStoryboard" bundle:nil]instantiateViewControllerWithIdentifier:@"Lista"];
-    
-    [self.navigationController pushViewController:lista animated:YES];
-    
-}
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -144,6 +136,14 @@
 
 - (void)wheelView:(GNWheelView *)wheelView didStartIdleStateForRowAtIndex:(unsigned int)index{
     
+    
+}
+
+-(void)goToListaFrom:(GNWheelView *)wheelView{
+    
+    ListaTableViewController *lista = [[UIStoryboard storyboardWithName:@"SecondStoryboard" bundle:nil]instantiateViewControllerWithIdentifier:@"Lista"];
+    
+    [self.navigationController pushViewController:lista animated:YES];
     
 }
 
