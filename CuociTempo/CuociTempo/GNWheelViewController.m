@@ -24,8 +24,11 @@
 // THE SOFTWARE.
 
 #import "GNWheelViewController.h"
-#import <QuartzCore/QuartzCore.h>
 #import "ListaTableViewController.h"
+#import "PesoViewController.h"
+
+
+#import <QuartzCore/QuartzCore.h>
 
 @interface GNWheelViewController ()
 
@@ -121,8 +124,18 @@
     
     NSLog(@"index %i",index);
     
+    //if([self.title isEqualToString:@"Microonde"]){
+        
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"ThirdStoryboard" bundle:nil];
+        
+        PesoViewController *peso = [storyBoard instantiateViewControllerWithIdentifier:@"PesoView"];
+        
+        [self.navigationController pushViewController:peso animated:NO];
+        
+  //  }
    
 }
+
 
 - (BOOL)wheelView:(GNWheelView *)wheelView shouldEnterIdleStateForRowAtIndex:(unsigned int)index animated:(BOOL *)animated{
     
