@@ -68,22 +68,21 @@
     //Controlliamo se il timer è fermo, nel caso impediamo l'esecuzione del resto del codice
     if (!isRunning) return;
     
-    //Riabilito il picker se no non funziona
     
     //Impostiamo no il boolenao isRunning
     isRunning = NO;
     
+    
+    [self.lancetta.layer removeAllAnimations];
     //Controlliamo se il timer è valido (cioè sta andando) e nel caso lo fermiamo
     //Se cercassimo di invalidare un timer fermo andrebbe in crash l'App
     if ( [self.theTimer isValid] ) [self.theTimer invalidate];
     
-    //Re-impostiamo il countdown con il nostro metodo personalizzato
-//    countdown = [self getPickerTime];
-    
     //Assegnamo alla proprietà text della UILabel la stringa restituita dal metodo formattazioneLabel
-  //  self.countdownLabel.text = [self formattazioneLabel];
+    self.countdownLabel.text = [self formattazioneLabel];
 
 }
+
 //questo metodo non è void quindi si apetta la restuzione di un oggeto della stessa classa scritta al posto del void (NSString in questo caso)
 - (NSString*)formattazioneLabel {
     
@@ -111,11 +110,8 @@
         //Impostiamo no il boolenao isRunning
         isRunning = NO;
         
-        //Controllismo se il timer è valido (cioè sta andando) e nel caso lo fermiamo
+        //Controlliamo se il timer è valido (cioè sta andando) e nel caso lo fermiamo
         if ( [self.theTimer isValid] ) [self.theTimer invalidate];
-        
-        //Re-impostiamo la data con il nostro metodo personalizzato
-    //    countdown = [self getPickerTime];
         
         //Azzeriamo il tempo nella label
         self.countdownLabel.text = @"00:00:00";
@@ -154,5 +150,6 @@
     //Aggiungiamo l'animazione al layer della lancetta per farla ruotare
     [self.lancetta.layer addAnimation:rotationAnimation forKey:nil];
     
+
 }
 @end
