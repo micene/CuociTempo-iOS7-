@@ -15,18 +15,15 @@
 
 @implementation PesoViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.swipeToBack = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back:)];
+    [self.swipeToBack setDirection:(UISwipeGestureRecognizerDirectionLeft)];
+    [self.view addGestureRecognizer:self.swipeToBack];
 	// Do any additional setup after loading the view.
 }
 
@@ -42,5 +39,18 @@
         TimerViewController *time = segue.destinationViewController;
     }
 }
+
+-(void)back:(UISwipeGestureRecognizer*)sender{
+    
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.3;
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromRight;
+    
+    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+    [self.navigationController popViewControllerAnimated:NO];
+    
+}
+
 
 @end

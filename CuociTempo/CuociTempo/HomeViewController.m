@@ -59,7 +59,7 @@
 
 - (IBAction)microPushed:(id)sender {
     
-    MicroViewController *micro = [self.storyboard instantiateViewControllerWithIdentifier:@"Micro"];
+    GNWheelViewController *micro = [self.storyboard instantiateViewControllerWithIdentifier:@"Wheel"];
     CATransition* transition = [CATransition animation];
     transition.duration = 0.6;
     transition.type = kCATransitionPush;
@@ -70,7 +70,7 @@
 }
 - (IBAction)normalePushed:(id)sender {
     
-    NormaleViewController *normale = [self.storyboard instantiateViewControllerWithIdentifier:@"Normale"];
+    GNWheelViewController *normale = [self.storyboard instantiateViewControllerWithIdentifier:@"Wheel"];
     CATransition* transition = [CATransition animation];
     transition.duration = 0.6;
     transition.type = kCATransitionPush;

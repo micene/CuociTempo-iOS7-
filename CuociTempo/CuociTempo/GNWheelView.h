@@ -66,6 +66,8 @@
 - (BOOL)wheelView:(GNWheelView *)wheelView shouldEnterIdleStateForRowAtIndex:(unsigned int)index animated:(BOOL*)animated;
 - (UIView *)wheelView:(GNWheelView *)wheelView idleStateViewForRowAtIndex:(unsigned int)index;
 - (void)wheelView:(GNWheelView *)wheelView didStartIdleStateForRowAtIndex:(unsigned int)index;
+
+
 - (void)goToListaFrom:(GNWheelView *)wheelView;
 
 @end

@@ -411,14 +411,7 @@ void(^setShadowForLayer)(CALayer *) = ^(CALayer *____layer) {
         [_delegate wheelView:self didSelectedRowAtIndex:[_originalPositionedViews indexOfObject:gesture.view]];
     }
     
-}
-
--(void)goToLista:(id)sender{
-    
-    if ([_delegate respondsToSelector:@selector(goToListaFrom:)]) {
-        
-        [_delegate goToListaFrom:self];
-    }
+    [_originalPositionedViews removeAllObjects];
 }
 
 - (void)idleStateBegin{
@@ -622,6 +615,13 @@ void(^rotateLayer)(CALayer*,float,id,NSString*,BOOL) = ^(CALayer * ____layer,flo
     
 }
 
+-(void)goToLista:(id)sender{
+    
+    if ([_delegate respondsToSelector:@selector(goToListaFrom:)]) {
+        
+        [_delegate goToListaFrom:self];
+    }
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

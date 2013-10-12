@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface PesoViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeToBack;
 
 @end

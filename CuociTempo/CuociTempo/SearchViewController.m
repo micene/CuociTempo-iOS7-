@@ -21,6 +21,11 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 	// Do any additional setup after loading the view.
+    
+    self.swipeToBack = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back:)];
+    [self.swipeToBack setDirection:(UISwipeGestureRecognizerDirectionLeft)];
+    [self.view addGestureRecognizer:self.swipeToBack];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -45,6 +50,18 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return nil;
+}
+
+-(void)back:(UISwipeGestureRecognizer*)sender{
+    
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.3;
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromRight;
+    
+    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    
 }
 @end
 

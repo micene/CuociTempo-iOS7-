@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Peso View Controller-->
         <scene sceneID="EtF-vX-kMc">
             <objects>
-                <viewController storyboardIdentifier="PesoView" id="vZb-2G-Tey" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PesoView" id="vZb-2G-Tey" customClass="PesoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jj3-MH-1MQ"/>
                         <viewControllerLayoutGuide type="bottom" id="bh7-si-Hjh"/>
@@ -39,8 +39,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ivk-QY-EKW"/>
+                    <connections>
+                        <outlet property="swipeToBack" destination="QEg-zw-Eu2" id="TfR-4O-YVs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W3c-RD-kv5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="QEg-zw-Eu2"/>
             </objects>
             <point key="canvasLocation" x="532" y="39"/>
         </scene>

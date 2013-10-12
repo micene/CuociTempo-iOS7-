@@ -45,7 +45,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -124,6 +124,7 @@
     
     NSLog(@"index %i",index);
     
+    
     //if([self.title isEqualToString:@"Microonde"]){
         
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"ThirdStoryboard" bundle:nil];
@@ -133,7 +134,7 @@
         [self.navigationController pushViewController:peso animated:NO];
         
   //  }
-   
+
 }
 
 
@@ -159,5 +160,6 @@
     [self.navigationController pushViewController:lista animated:YES];
     
 }
+
 
 @end
