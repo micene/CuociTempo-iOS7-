@@ -14,12 +14,9 @@
 		D1013BF7180828270016DBA6 /* Racing_header_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1013BF1180828270016DBA6 /* Racing_header_bg@2x.png */; };
 		D1013BF8180828270016DBA6 /* Racing_Lancetta.png in Resources */ = {isa = PBXBuildFile; fileRef = D1013BF2180828270016DBA6 /* Racing_Lancetta.png */; };
 		D1013BF9180828270016DBA6 /* Racing_Lancetta@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1013BF3180828270016DBA6 /* Racing_Lancetta@2x.png */; };
-		D10B9CCD1804A5E900958B59 /* NormaleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D10B9CCC1804A5E900958B59 /* NormaleViewController.m */; };
 		D10B9CCF1804A8DA00958B59 /* SecondStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D10B9CCE1804A8DA00958B59 /* SecondStoryboard.storyboard */; };
 		D10B9CD51804A93600958B59 /* ListaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D10B9CD41804A93600958B59 /* ListaTableViewController.m */; };
 		D12FA8F818041BA50047B5AC /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D12FA8F718041BA50047B5AC /* HomeViewController.m */; };
-		D12FA8FB18041CC10047B5AC /* PressioneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D12FA8FA18041CC10047B5AC /* PressioneViewController.m */; };
-		D12FA8FE18041F200047B5AC /* MicroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D12FA8FD18041F200047B5AC /* MicroViewController.m */; };
 		D12FA945180489620047B5AC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12FA944180489620047B5AC /* QuartzCore.framework */; };
 		D1A7A1D51804ABD70087F973 /* GrigliaCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A7A1D41804ABD70087F973 /* GrigliaCollectionViewController.m */; };
 		D1ADCFDE18054FAA00B330E2 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1ADCFDD18054FAA00B330E2 /* SearchViewController.m */; };
@@ -65,17 +62,11 @@
 		D1013BF1180828270016DBA6 /* Racing_header_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Racing_header_bg@2x.png"; sourceTree = "<group>"; };
 		D1013BF2180828270016DBA6 /* Racing_Lancetta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Racing_Lancetta.png; sourceTree = "<group>"; };
 		D1013BF3180828270016DBA6 /* Racing_Lancetta@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Racing_Lancetta@2x.png"; sourceTree = "<group>"; };
-		D10B9CCB1804A5E900958B59 /* NormaleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormaleViewController.h; sourceTree = "<group>"; };
-		D10B9CCC1804A5E900958B59 /* NormaleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormaleViewController.m; sourceTree = "<group>"; };
 		D10B9CCE1804A8DA00958B59 /* SecondStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SecondStoryboard.storyboard; sourceTree = "<group>"; };
 		D10B9CD31804A93600958B59 /* ListaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListaTableViewController.h; sourceTree = "<group>"; };
 		D10B9CD41804A93600958B59 /* ListaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListaTableViewController.m; sourceTree = "<group>"; };
 		D12FA8F618041BA50047B5AC /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		D12FA8F718041BA50047B5AC /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		D12FA8F918041CC10047B5AC /* PressioneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PressioneViewController.h; sourceTree = "<group>"; };
-		D12FA8FA18041CC10047B5AC /* PressioneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PressioneViewController.m; sourceTree = "<group>"; };
-		D12FA8FC18041F200047B5AC /* MicroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MicroViewController.h; sourceTree = "<group>"; };
-		D12FA8FD18041F200047B5AC /* MicroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MicroViewController.m; sourceTree = "<group>"; };
 		D12FA944180489620047B5AC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D1A7A1D31804ABD70087F973 /* GrigliaCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrigliaCollectionViewController.h; sourceTree = "<group>"; };
 		D1A7A1D41804ABD70087F973 /* GrigliaCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrigliaCollectionViewController.m; sourceTree = "<group>"; };
@@ -173,7 +164,6 @@
 		D10B9CD81804A95D00958B59 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D1F3C16F1806C5D200BF5DD5 /* Maybe to Use */,
 				D12FA8F618041BA50047B5AC /* HomeViewController.h */,
 				D12FA8F718041BA50047B5AC /* HomeViewController.m */,
 				D1ADCFDC18054FAA00B330E2 /* SearchViewController.h */,
@@ -275,19 +265,6 @@
 				D1B17A60180339D60067B32D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D1F3C16F1806C5D200BF5DD5 /* Maybe to Use */ = {
-			isa = PBXGroup;
-			children = (
-				D12FA8F918041CC10047B5AC /* PressioneViewController.h */,
-				D12FA8FA18041CC10047B5AC /* PressioneViewController.m */,
-				D12FA8FC18041F200047B5AC /* MicroViewController.h */,
-				D12FA8FD18041F200047B5AC /* MicroViewController.m */,
-				D10B9CCB1804A5E900958B59 /* NormaleViewController.h */,
-				D10B9CCC1804A5E900958B59 /* NormaleViewController.m */,
-			);
-			name = "Maybe to Use";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,18 +375,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D12FA8FB18041CC10047B5AC /* PressioneViewController.m in Sources */,
 				D1B17A4E180339D60067B32D /* CuociTempo.xcdatamodeld in Sources */,
 				D10B9CD51804A93600958B59 /* ListaTableViewController.m in Sources */,
 				D1ADCFDE18054FAA00B330E2 /* SearchViewController.m in Sources */,
 				D1013BED180822AC0016DBA6 /* TimerViewController.m in Sources */,
 				D1B17A4B180339D60067B32D /* AppDelegate.m in Sources */,
 				D1A7A1D51804ABD70087F973 /* GrigliaCollectionViewController.m in Sources */,
-				D10B9CCD1804A5E900958B59 /* NormaleViewController.m in Sources */,
 				D1B17A47180339D60067B32D /* main.m in Sources */,
 				D1F3C1801806D34B00BF5DD5 /* GNWheelView.m in Sources */,
 				D12FA8F818041BA50047B5AC /* HomeViewController.m in Sources */,
-				D12FA8FE18041F200047B5AC /* MicroViewController.m in Sources */,
 				D1F3C1811806D34B00BF5DD5 /* GNWheelViewController.m in Sources */,
 				D1F3C1881806D99600BF5DD5 /* PesoViewController.m in Sources */,
 			);

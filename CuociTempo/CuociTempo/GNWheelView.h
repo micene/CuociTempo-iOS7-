@@ -69,5 +69,7 @@
 
 
 - (void)goToListaFrom:(GNWheelView *)wheelView;
+- (void)swipeToHome:(GNWheelView *)wheelView;
+
 
 @end

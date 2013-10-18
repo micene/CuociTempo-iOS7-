@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIView *lancetta;
 @property (strong, nonatomic) NSTimer *theTimer;
 @property (weak, nonatomic) IBOutlet UILabel *countdownLabel;
+@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeToBack;
 
 @end

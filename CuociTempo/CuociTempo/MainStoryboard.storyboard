@@ -98,7 +98,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="microPushed:" destination="1UP-wY-MsS" eventType="touchUpInside" id="dQs-WR-MAz"/>
                                     <action selector="normalePushed:" destination="1UP-wY-MsS" eventType="touchUpInside" id="1IH-Ko-4ES"/>
                                 </connections>
                             </button>
@@ -112,6 +111,18 @@
                                     <action selector="microPushed:" destination="1UP-wY-MsS" eventType="touchUpInside" id="LBX-zf-WlR"/>
                                 </connections>
                             </button>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zfA-65-zcm">
+                                <rect key="frame" x="0.0" y="-44" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Tipo</string>
+                                    <string>Nome</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="1UP-wY-MsS" id="ldV-r7-Zlo"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -121,11 +132,25 @@
                     </view>
                     <navigationItem key="navigationItem" id="k7V-YB-H8x"/>
                     <connections>
+                        <outlet property="microButton" destination="BF1-AF-qdr" id="fyH-of-5JF"/>
+                        <outlet property="normaleButton" destination="uQs-gZ-mXu" id="UGf-5O-Qsd"/>
+                        <outlet property="pressioneButton" destination="8OC-Gu-JMb" id="DnO-Tl-08b"/>
+                        <outlet property="searchBar" destination="zfA-65-zcm" id="4QN-Fv-m6d"/>
+                        <outlet property="searchDisplayController" destination="95Y-it-ZjT" id="cwL-1f-3th"/>
                         <outlet property="swipeSearch" destination="Ido-Qk-dpO" id="AXi-g1-iyI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XhN-PO-MAm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="Ido-Qk-dpO"/>
+                <searchDisplayController id="95Y-it-ZjT">
+                    <connections>
+                        <outlet property="delegate" destination="1UP-wY-MsS" id="wCQ-Nw-dbd"/>
+                        <outlet property="searchBar" destination="zfA-65-zcm" id="ROF-m3-Rzb"/>
+                        <outlet property="searchContentsController" destination="1UP-wY-MsS" id="wO2-LM-6fY"/>
+                        <outlet property="searchResultsDataSource" destination="1UP-wY-MsS" id="JQx-XR-XHg"/>
+                        <outlet property="searchResultsDelegate" destination="1UP-wY-MsS" id="ms7-UJ-VJZ"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="642" y="17"/>
         </scene>

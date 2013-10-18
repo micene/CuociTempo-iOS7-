@@ -110,9 +110,11 @@
                     <connections>
                         <outlet property="countdownLabel" destination="zwe-5O-OnU" id="f6P-HM-FBF"/>
                         <outlet property="lancetta" destination="kox-ux-zca" id="zr4-ru-Xbm"/>
+                        <outlet property="swipeToBack" destination="yl6-tk-cxS" id="7dN-9l-EIV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Le6-CQ-DGD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="yl6-tk-cxS"/>
             </objects>
             <point key="canvasLocation" x="952" y="39"/>
         </scene>

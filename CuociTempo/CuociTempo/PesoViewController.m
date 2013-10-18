@@ -22,7 +22,7 @@
     [super viewDidLoad];
     
     self.swipeToBack = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back:)];
-    [self.swipeToBack setDirection:(UISwipeGestureRecognizerDirectionLeft)];
+    [self.swipeToBack setDirection:(UISwipeGestureRecognizerDirectionRight)];
     [self.view addGestureRecognizer:self.swipeToBack];
 	// Do any additional setup after loading the view.
 }
@@ -45,7 +45,7 @@
     CATransition* transition = [CATransition animation];
     transition.duration = 0.3;
     transition.type = kCATransitionPush;
-    transition.subtype = kCATransitionFromRight;
+    transition.subtype = kCATransitionFromLeft;
     
     [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
     [self.navigationController popViewControllerAnimated:NO];

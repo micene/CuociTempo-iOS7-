@@ -58,14 +58,22 @@
     gesture.delegate = self;
     
     [self addGestureRecognizer:gesture];
-
+    
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToBack:)];
+    
+    [swipe setDirection:UISwipeGestureRecognizerDirectionRight];
+    
+    swipe.delegate = self;
+    
+    [self addGestureRecognizer:swipe];
+    
     [self loadViews];
     
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer;{
     
-    return NO;
+    return YES;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -96,10 +104,12 @@
 
 - (void)reloadData{
     
-
+    NSLog(@"d");
     
     [self loadViews];
 }
+
+
 
 - (void)loadViews{
     
@@ -126,7 +136,7 @@
         __view.backgroundColor = color;
         
         //BOTTONE PER LISTA
-        self.lista = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
+        self.lista = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 50)];
         [self.lista addTarget:self action:@selector(goToLista:) forControlEvents:UIControlEventTouchUpInside];
         self.lista.backgroundColor = [UIColor yellowColor];
         [self.lista setTitle:@"Lista" forState:UIControlStateNormal];
@@ -160,7 +170,7 @@
         [UIView setAnimationDelay:0.2];
         [UIView setAnimationDuration:1.0];
         __view.alpha = 1.0;
-        [self setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5]];
+        [self setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:1]];
         [UIView commitAnimations];
     }
 }
@@ -615,6 +625,8 @@ void(^rotateLayer)(CALayer*,float,id,NSString*,BOOL) = ^(CALayer * ____layer,flo
     
 }
 
+
+//premo il bottone e vado alla lista
 -(void)goToLista:(id)sender{
     
     if ([_delegate respondsToSelector:@selector(goToListaFrom:)]) {
@@ -623,13 +635,14 @@ void(^rotateLayer)(CALayer*,float,id,NSString*,BOOL) = ^(CALayer * ____layer,flo
     }
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+//swippo e torno all home
+-(void)swipeToBack:(UISwipeGestureRecognizer*)sender{
+    
+    if ([_delegate respondsToSelector:@selector(swipeToHome:)]) {
+        
+        [_delegate swipeToHome:self];
+    }
 }
-*/
+
 
 @end

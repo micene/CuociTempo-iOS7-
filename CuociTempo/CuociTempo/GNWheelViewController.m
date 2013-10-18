@@ -46,12 +46,7 @@
 {
     [super viewDidLoad];
     
-	// Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)viewDidAppear:(BOOL)animated{
-    
-    self.wheelView.delegate = self;
+    NSLog(@"A");
     
     //inizializzo la imageview
     UIImageView *cuoci = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
@@ -67,10 +62,21 @@
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDuration:2.5];
     [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+    
     cuoci.alpha = 0.0;
+    
     [self.wheelView setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.5]];
-  //  [self.wheelView reloadData];
+    
     [UIView commitAnimations];
+    
+	// Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    
+    NSLog(@"b");
+    
+    self.wheelView.delegate = self;
     
     self.wheelView.idleDuration = 0;
 }
@@ -82,6 +88,7 @@
     //se l animazione dell imageview e' finita allora mostro la ruota
     if([animationID isEqualToString:@"fadeIn"]){
         
+        NSLog(@"c");
         [self.wheelView reloadData];
         
     }
@@ -159,6 +166,18 @@
     
     [self.navigationController pushViewController:lista animated:YES];
     
+}
+
+-(void)swipeToHome:(GNWheelView *)wheelView{
+    
+        CATransition* transition = [CATransition animation];
+        transition.duration = 0.3;
+        transition.type = kCATransitionPush;
+        transition.subtype = kCATransitionFromLeft;
+        
+        [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+        [self.navigationController popToRootViewControllerAnimated:NO];
+        
 }
 
 

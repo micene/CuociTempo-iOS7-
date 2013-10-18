@@ -43,6 +43,11 @@
 	// Do any additional setup after loading the view.
     
     self.countdownLabel.text = [self formattazioneLabel];
+    
+    self.swipeToBack = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back:)];
+    [self.swipeToBack setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    [self.view addGestureRecognizer:self.swipeToBack];
+
 }
 
 - (IBAction)start:(id)sender {
@@ -83,7 +88,6 @@
 
 }
 
-//questo metodo non è void quindi si apetta la restuzione di un oggeto della stessa classa scritta al posto del void (NSString in questo caso)
 - (NSString*)formattazioneLabel {
     
     //creo 3 numeri interi con la matematica necessaria per calcolare secondi, minuti e ore
@@ -151,5 +155,17 @@
     [self.lancetta.layer addAnimation:rotationAnimation forKey:nil];
     
 
+}
+
+-(void)back:(UISwipeGestureRecognizer*)sender{
+    
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.3;
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromLeft;
+    
+    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+    [self.navigationController popViewControllerAnimated:NO];
+    
 }
 @end
