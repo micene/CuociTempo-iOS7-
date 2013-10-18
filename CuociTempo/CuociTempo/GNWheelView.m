@@ -104,7 +104,6 @@
 
 - (void)reloadData{
     
-    NSLog(@"d");
     
     [self loadViews];
 }
@@ -112,6 +111,8 @@
 
 
 - (void)loadViews{
+    
+    [_originalPositionedViews removeAllObjects];
     
     [_views removeAllObjects];
     
@@ -421,7 +422,6 @@ void(^setShadowForLayer)(CALayer *) = ^(CALayer *____layer) {
         [_delegate wheelView:self didSelectedRowAtIndex:[_originalPositionedViews indexOfObject:gesture.view]];
     }
     
-    [_originalPositionedViews removeAllObjects];
 }
 
 - (void)idleStateBegin{
