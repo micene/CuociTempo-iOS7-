@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "DataManager.h"
 
 #import "SearchViewController.h"
 #import "GNWheelView.h"
@@ -21,6 +22,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[DataManager sharedClass]setup];
+
     
     self.searchBar.delegate = self;
     self.searchBar.showsCancelButton = YES;
@@ -49,27 +52,53 @@
 }
 - (IBAction)microPushed:(id)sender {
     
-    GNWheelViewController *micro = [self.storyboard instantiateViewControllerWithIdentifier:@"Wheel"];
+    GNWheelViewController *wheel = [self.storyboard instantiateViewControllerWithIdentifier:@"Wheel"];
+    wheel.title = [sender currentTitle];
     CATransition* transition = [CATransition animation];
     transition.duration = 0.6;
     transition.type = kCATransitionPush;
     transition.subtype = kCATransitionFromTop;
     
     [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-    [self.navigationController pushViewController:micro animated:NO];
+    [self.navigationController pushViewController:wheel animated:NO];
 }
 - (IBAction)normalePushed:(id)sender {
     
-    GNWheelViewController *normale = [self.storyboard instantiateViewControllerWithIdentifier:@"Wheel"];
+    GNWheelViewController *wheel = [self.storyboard instantiateViewControllerWithIdentifier:@"Wheel"];
+    wheel.title = [sender currentTitle];
     CATransition* transition = [CATransition animation];
     transition.duration = 0.6;
     transition.type = kCATransitionPush;
     transition.subtype = kCATransitionFromRight;
     
     [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-    [self.navigationController pushViewController:normale animated:NO];
+    [self.navigationController pushViewController:wheel animated:NO];
 }
 
+
+//Swippa verso il basso per la ricerca
+-(void)swipeSearched:(UISwipeGestureRecognizer*)sender{
+    
+    [UIView setAnimationDelegate:self];
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.4];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+	self.searchBar.transform =  CGAffineTransformMakeTranslation (0, 60);
+	[UIView commitAnimations];
+    
+	/*CABasicAnimation *bounceAnimation = [CABasicAnimation animationWithKeyPath:@"cancelClicked"];
+     bounceAnimation.duration = 0.2;
+     bounceAnimation.fromValue = [NSNumber numberWithInt:20];
+     bounceAnimation.toValue = [NSNumber numberWithInt:0];
+     bounceAnimation.fillMode = kCAFillModeForwards;
+     bounceAnimation.removedOnCompletion = NO;
+     bounceAnimation.additive = YES;
+     [self.searchBar.layer addAnimation:bounceAnimation forKey:nil];*/
+    [self.searchBar becomeFirstResponder];
+    
+}
+
+//Metodi del SearchDisplayController
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -79,7 +108,7 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *simpleTableIdentifier = @"RecipeCell";
+    static NSString *simpleTableIdentifier = @"cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
@@ -87,6 +116,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     if (tableView == self.searchDisplayController.searchResultsTableView) {
+        
         cell.textLabel.text = @"a";
     }
     
@@ -114,28 +144,6 @@ shouldReloadTableForSearchString:(NSString *)searchString
     return YES;
 }*/
 
--(void)swipeSearched:(UISwipeGestureRecognizer*)sender{
-    
-    [UIView setAnimationDelegate:self];
-	[UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:0.4];
-	[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-	self.searchBar.transform =  CGAffineTransformMakeTranslation (0, 60);
-	[UIView commitAnimations];
-    
-	/*CABasicAnimation *bounceAnimation = [CABasicAnimation animationWithKeyPath:@"cancelClicked"];
-	bounceAnimation.duration = 0.2;
-	bounceAnimation.fromValue = [NSNumber numberWithInt:20];
-	bounceAnimation.toValue = [NSNumber numberWithInt:0];
-	bounceAnimation.fillMode = kCAFillModeForwards;
-	bounceAnimation.removedOnCompletion = NO;
-	bounceAnimation.additive = YES;
-	[self.searchBar.layer addAnimation:bounceAnimation forKey:nil];*/
-
-    
-    [self.searchBar becomeFirstResponder];
-    
-}
 
 -(void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller{
 
@@ -146,6 +154,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
 	self.searchBar.transform =  CGAffineTransformMakeTranslation (0, -44);
 	[UIView commitAnimations];
 
+    [self.tableView setHidden:YES];
     [self.searchBar resignFirstResponder];
 }
 

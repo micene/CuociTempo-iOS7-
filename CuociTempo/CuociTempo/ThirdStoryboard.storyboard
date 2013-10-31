@@ -24,6 +24,9 @@
                                     <segment title="500"/>
                                     <segment title="1000"/>
                                 </segments>
+                                <connections>
+                                    <action selector="selezionaPeso:" destination="vZb-2G-Tey" eventType="valueChanged" id="FGV-ws-SnD"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arl-NQ-PKT">
                                 <rect key="frame" x="137" y="311" width="46" height="30"/>
@@ -51,7 +54,7 @@
         <!--Timer View Controller-->
         <scene sceneID="eEr-aX-5MV">
             <objects>
-                <viewController id="CsQ-FS-AH4" customClass="TimerViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimerView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CsQ-FS-AH4" customClass="TimerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wzP-zb-WTf"/>
                         <viewControllerLayoutGuide type="bottom" id="gle-BL-ddn"/>

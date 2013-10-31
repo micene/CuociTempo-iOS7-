@@ -10,5 +10,5 @@
 
 @interface PesoViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeToBack;
-
+@property (assign,nonatomic)NSString* cottura;
 @end

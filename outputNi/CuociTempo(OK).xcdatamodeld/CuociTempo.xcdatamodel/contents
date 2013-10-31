@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Cottura" representedClassName="Cottura" syncable="YES">
+        <attribute name="cotturaid" optional="YES" attributeType="Integer 64" syncable="YES"></attribute>
+        <attribute name="type" optional="NO" attributeType="String" syncable="YES"></attribute>
+        <attribute name="peso" optional="YES" attributeType="String" syncable="YES"></attribute>
+        <relationship name="alimentos" destinationEntity="Alimento" inverseName="cotturas" inverseEntity="Alimento" toMany="YES" deletionRule="" syncable="YES" minCount="0" optional="YES"></relationship>
+    </entity>
+    <entity name="Tipo" representedClassName="Tipo" syncable="YES">
+        <attribute name="nametype" optional="NO" attributeType="String" syncable="YES"></attribute>
+        <attribute name="tipoid" optional="YES" attributeType="Integer 64" syncable="YES"></attribute>
+        <relationship name="alimentos" destinationEntity="Alimento" inverseName="tipo" inverseEntity="Alimento" toMany="YES" deletionRule="No Action" syncable="YES" minCount="0" optional="YES"></relationship>
+    </entity>
+    <entity name="Alimento" representedClassName="Alimento" syncable="YES">
+        <attribute name="alimentoid" optional="YES" attributeType="Integer 64" syncable="YES"></attribute>
+        <attribute name="name" optional="NO" attributeType="String" syncable="YES"></attribute>
+        <relationship name="tipo" destinationEntity="Tipo" inverseName="alimentos" inverseEntity="Tipo" toMany="NO" deletionRule="Nullify" syncable="YES" minCount="1" maxCount="1" optional="NO"></relationship>
+        <relationship name="cotturas" destinationEntity="Cottura" inverseName="alimentos" inverseEntity="Cottura" toMany="YES" deletionRule="" syncable="YES" minCount="0" optional="YES"></relationship>
+    </entity>
+</model>

@@ -82,9 +82,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="160" height="400"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.2885450108" green="1" blue="0.14253111160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Pressione"/>
                                 <connections>
                                     <action selector="pressionePushed:" destination="1UP-wY-MsS" eventType="touchUpInside" id="RfC-8S-ZxK"/>
                                 </connections>
@@ -93,10 +92,8 @@
                                 <rect key="frame" x="160" y="0.0" width="160" height="400"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Normale"/>
                                 <connections>
                                     <action selector="normalePushed:" destination="1UP-wY-MsS" eventType="touchUpInside" id="1IH-Ko-4ES"/>
                                 </connections>
@@ -104,7 +101,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BF1-AF-qdr">
                                 <rect key="frame" x="0.0" y="400" width="320" height="168"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Microonde">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -115,10 +112,6 @@
                                 <rect key="frame" x="0.0" y="-44" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <scopeButtonTitles>
-                                    <string>Tipo</string>
-                                    <string>Nome</string>
-                                </scopeButtonTitles>
                                 <connections>
                                     <outlet property="delegate" destination="1UP-wY-MsS" id="ldV-r7-Zlo"/>
                                 </connections>

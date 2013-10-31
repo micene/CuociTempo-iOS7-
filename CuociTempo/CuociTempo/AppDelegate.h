@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  CuociTempo
+//  Template
 //
-//  Created by Michele Navolio on 07/10/13.
+//  Created by Michele Navolio on 19/09/13.
 //  Copyright (c) 2013 Michele Navolio. All rights reserved.
 //
 
@@ -14,7 +14,7 @@
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;\
+@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

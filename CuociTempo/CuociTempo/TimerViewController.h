@@ -13,5 +13,8 @@
 @property (strong, nonatomic) NSTimer *theTimer;
 @property (weak, nonatomic) IBOutlet UILabel *countdownLabel;
 @property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeToBack;
+@property (assign,nonatomic)int peso;
+@property (assign,nonatomic)NSString* cottura;
+
 
 @end

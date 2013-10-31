@@ -7,6 +7,7 @@
 //
 
 #import "TimerViewController.h"
+#import "DataManager.h"
 
 @interface TimerViewController ()
 {
@@ -15,34 +16,40 @@
     
     //Creiamo un variabile intera che useremo come contatore
     int countdown;
+    
+    NSString *ris;
+    
 }
 @end
 
 @implementation TimerViewController
 
 
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    NSLog(@"peso %i",self.peso);
+    NSLog(@"cottura %@",self.cottura);
+    
+    if([self.cottura isEqualToString:@"Microonde"]){
+        ris = [[DataManager sharedClass]tempoPerAlimento:[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"cottura.type == 'Microonde' AND alimento.name == '%@' AND peso.pesoid = %i",self.title,(self.peso + 1)]]];
+    }else{
+        ris = [[DataManager sharedClass]tempoPerAlimento:[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"cottura.type == '%@' AND alimento.name == '%@'",self.cottura,self.title]]];
+    }
     
     //Mettiamo isRunning su no perché il timer è fermo
     isRunning = NO;
     
     //diamo un valore iniziale alla primitiva
-    countdown = 60;
+    countdown = ris.doubleValue* 60;
 	// Do any additional setup after loading the view.
     
+    
     self.countdownLabel.text = [self formattazioneLabel];
+    
+    NSLog(@"name:%@ tempo:%@",self.title,ris);
     
     self.swipeToBack = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back:)];
     [self.swipeToBack setDirection:(UISwipeGestureRecognizerDirectionRight)];
@@ -76,7 +83,8 @@
     
     //Impostiamo no il boolenao isRunning
     isRunning = NO;
-    
+    countdown = ris.doubleValue*60;
+
     
     [self.lancetta.layer removeAllAnimations];
     //Controlliamo se il timer è valido (cioè sta andando) e nel caso lo fermiamo

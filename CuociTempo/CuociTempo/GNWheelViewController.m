@@ -26,32 +26,36 @@
 #import "GNWheelViewController.h"
 #import "ListaTableViewController.h"
 #import "PesoViewController.h"
-
+#import "DataManager.h"
+#import "Alimento.h"
+#import "TimerViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
 @interface GNWheelViewController ()
+
 
 @end
 
 @implementation GNWheelViewController
 
 
+//iniziallizzo la view
 - (GNWheelView *)wheelView{
     
     return (GNWheelView *)self.view;
 }
 
+//al caricamento della view
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSLog(@"A");
     
     //inizializzo la imageview
     UIImageView *cuoci = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
     [self.wheelView addSubview:cuoci];
+    
     
     [self.wheelView setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0]];
     cuoci.alpha = 1;
@@ -69,9 +73,19 @@
     
     [UIView commitAnimations];
     
-	// Do any additional setup after loading the view, typically from a nib.
+   /* NSFetchedResultsController *fRC;
+    
+    fRC = [[DataManager sharedClass]fetchedEntityWithClassName:@"Alimento" sortDescriptorWithKey:@"name" sectionNameKeyPath:nil setPredicate:[NSPredicate predicateWithFormat:@"ANY cotturas.type == %@",self.title] delegate:self.nFSDelegate];
+
+    
+    NSError *error;
+    if (![fRC performFetch:&error]) {
+        NSLog(@"%@ %@",error,[error userInfo]);
+    }*/
+    
 }
 
+//qnd la view e connessa
 - (void)viewDidAppear:(BOOL)animated{
     
     NSLog(@"b");
@@ -81,6 +95,7 @@
     self.wheelView.idleDuration = 0;
 }
 
+//qnd si ferma l'animazione
 - (void)animationDidStop:(NSString *)animationID
                 finished:(NSNumber *)finished
                  context:(void *)context {
@@ -94,57 +109,80 @@
     }
 }
 
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
 
+//qnd si gira il device
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return NO;
 }
-
+//-----------------------------------
+//numero di righe
 - (unsigned int)numberOfRowsOfWheelView:(GNWheelView *)wheelView{
     
-    return 12;
+    return [[DataManager sharedClass]numerodiEntita:0 predicate:[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"ANY cotturas.type == '%@'",self.title]]];
 }
-
+//cella che appare
 - (UIView *)wheelView:(GNWheelView *)wheelView viewForRowAtIndex:(unsigned int)index{
-
-    return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"item.jpg"]];
+   
+    
+     Alimento *alimento = (Alimento*)[[DataManager sharedClass]fetchRequestPerCella:index predicate:[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"ANY cotturas.type == '%@'",self.title]]];
+     UILabel *label = [[UILabel alloc]initWithFrame:wheelView.frame];
+     
+     label.text = alimento.name;
+     
+     return label;
+    
 }
+//qnd seleziono una cella
+- (void)wheelView:(GNWheelView *)wheelView didSelectedRowAtIndex:(unsigned int)index{
+    
+    Alimento *alimento = (Alimento*)[[DataManager sharedClass]fetchRequestPerCella:index predicate:[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"ANY cotturas.type == '%@'",self.title]]];
+    
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"ThirdStoryboard" bundle:nil];
 
+    if([self.title isEqualToString:@"Microonde"]){
+        
+        
+        PesoViewController *peso = [storyBoard instantiateViewControllerWithIdentifier:@"PesoView"];
+        
+        peso.title = alimento.name;
+        peso.cottura = self.title;
+
+        
+        [self.navigationController pushViewController:peso animated:NO];
+        
+    }else{
+        
+        TimerViewController *timer = [storyBoard instantiateViewControllerWithIdentifier:@"TimerView"];
+        
+        timer.title = alimento.name;
+        timer.cottura = self.title;
+        
+        [self.navigationController pushViewController:timer animated:NO];
+        
+    }
+    
+}
+//-------------------------------------
+//larghezza righe
 - (float)rowWidthInWheelView:(GNWheelView *)wheelView{
     
     return 300;
     
 }
-
+//altezza righe
 - (float)rowHeightInWheelView:(GNWheelView *)wheelView{
     
     return 83;
     
 }
-
-- (void)wheelView:(GNWheelView *)wheelView didSelectedRowAtIndex:(unsigned int)index{
-    
-    NSLog(@"index %i",index);
-    
-    
-    //if([self.title isEqualToString:@"Microonde"]){
-        
-        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"ThirdStoryboard" bundle:nil];
-        
-        PesoViewController *peso = [storyBoard instantiateViewControllerWithIdentifier:@"PesoView"];
-        
-        [self.navigationController pushViewController:peso animated:NO];
-        
-  //  }
-
-}
-
-
+//--------------------------------------
 - (BOOL)wheelView:(GNWheelView *)wheelView shouldEnterIdleStateForRowAtIndex:(unsigned int)index animated:(BOOL *)animated{
     
     return NO;
@@ -159,11 +197,12 @@
     
     
 }
-
+//---------------------------------------
 -(void)goToListaFrom:(GNWheelView *)wheelView{
     
     ListaTableViewController *lista = [[UIStoryboard storyboardWithName:@"SecondStoryboard" bundle:nil]instantiateViewControllerWithIdentifier:@"Lista"];
     
+    lista.title = self.title;
     [self.navigationController pushViewController:lista animated:YES];
     
 }
@@ -177,8 +216,14 @@
         
         [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
         [self.navigationController popToRootViewControllerAnimated:NO];
-        
+    
+    
+    
 }
+//----------------------------------
+/*
+ NSFetchedResultsController delegate methods to respond to additions, removals and so on.
+ */
 
 
 @end

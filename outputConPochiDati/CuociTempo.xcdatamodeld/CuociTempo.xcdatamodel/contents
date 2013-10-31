@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Tipo" representedClassName="Tipo" syncable="YES">
+        <attribute name="nametype" optional="NO" attributeType="String" syncable="YES"></attribute>
+        <attribute name="tipoid" optional="NO" attributeType="Integer 64" syncable="YES"></attribute>
+        <relationship name="alimentos" destinationEntity="Alimento" inverseName="tipo" inverseEntity="Alimento" toMany="YES" deletionRule="No Action" syncable="YES" minCount="0" optional="YES"></relationship>
+    </entity>
+    <entity name="Alimento" representedClassName="Alimento" syncable="YES">
+        <attribute name="alimentoid" optional="NO" attributeType="Integer 64" syncable="YES"></attribute>
+        <relationship name="tipo" destinationEntity="Tipo" inverseName="alimentos" inverseEntity="Tipo" toMany="NO" deletionRule="Nullify" syncable="YES" minCount="1" maxCount="1" optional="NO"></relationship>
+        <attribute name="name" optional="NO" attributeType="String" syncable="YES"></attribute>
+        <relationship name="cotturas" destinationEntity="Cottura" inverseName="alimento" inverseEntity="Cottura" toMany="YES" deletionRule="No Action" syncable="YES" minCount="0" optional="YES"></relationship>
+    </entity>
+    <entity name="Peso" representedClassName="Peso" syncable="YES">
+        <attribute name="weight" optional="NO" attributeType="Integer 64" syncable="YES"></attribute>
+        <attribute name="pesoid" optional="NO" attributeType="Integer 64" syncable="YES"></attribute>
+        <relationship name="cottura" destinationEntity="Cottura" inverseName="pesos" inverseEntity="Cottura" toMany="NO" deletionRule="Nullify" syncable="YES" minCount="1" maxCount="1" optional="NO"></relationship>
+        <relationship name="tempos" destinationEntity="Tempo" inverseName="peso" inverseEntity="Tempo" toMany="YES" deletionRule="No Action" syncable="YES" minCount="0" optional="YES"></relationship>
+    </entity>
+    <entity name="Cottura" representedClassName="Cottura" syncable="YES">
+        <attribute name="type" optional="NO" attributeType="String" syncable="YES"></attribute>
+        <attribute name="cotturaid" optional="NO" attributeType="Integer 64" syncable="YES"></attribute>
+        <relationship name="alimento" destinationEntity="Alimento" inverseName="cotturas" inverseEntity="Alimento" toMany="NO" deletionRule="Nullify" syncable="YES" minCount="1" maxCount="1" optional="NO"></relationship>
+        <relationship name="pesos" destinationEntity="Peso" inverseName="cottura" inverseEntity="Peso" toMany="YES" deletionRule="No Action" syncable="YES" minCount="0" optional="YES"></relationship>
+        <relationship name="tempos" destinationEntity="Tempo" inverseName="cottura" inverseEntity="Tempo" toMany="YES" deletionRule="No Action" syncable="YES" minCount="0" optional="YES"></relationship>
+    </entity>
+    <entity name="Tempo" representedClassName="Tempo" syncable="YES">
+        <relationship name="cottura" destinationEntity="Cottura" inverseName="tempos" inverseEntity="Cottura" toMany="NO" deletionRule="Nullify" syncable="YES" minCount="0" maxCount="1" optional="YES"></relationship>
+        <attribute name="time" optional="NO" attributeType="String" syncable="YES"></attribute>
+        <relationship name="peso" destinationEntity="Peso" inverseName="tempos" inverseEntity="Peso" toMany="NO" deletionRule="Nullify" syncable="YES" minCount="0" maxCount="1" optional="YES"></relationship>
+        <attribute name="tempoid" optional="NO" attributeType="Integer 64" syncable="YES"></attribute>
+    </entity>
+</model>

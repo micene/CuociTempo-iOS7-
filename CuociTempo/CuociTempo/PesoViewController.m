@@ -10,21 +10,31 @@
 #import "TimerViewController.h"
 
 @interface PesoViewController ()
-
+{
+    int peso;
+    NSString* cottura;
+}
 @end
 
+
 @implementation PesoViewController
-
-
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    NSLog(@"Peso Title %@",self.title);
+    
     self.swipeToBack = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back:)];
     [self.swipeToBack setDirection:(UISwipeGestureRecognizerDirectionRight)];
     [self.view addGestureRecognizer:self.swipeToBack];
 	// Do any additional setup after loading the view.
+}
+
+- (IBAction)selezionaPeso:(UISegmentedControl*)sender {
+    
+    NSLog(@"%i",sender.selectedSegmentIndex);
+    peso = sender.selectedSegmentIndex;
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,6 +47,9 @@
     if ([segue.identifier isEqualToString:@"goToTimer"]) {
         
         TimerViewController *time = segue.destinationViewController;
+        time.peso = peso;
+        time.title = self.title;
+        time.cottura = self.cottura;
     }
 }
 

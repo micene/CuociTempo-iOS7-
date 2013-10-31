@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeSearch;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-//@property (weak, nonatomic) IBOutlet UITableView *searchTableView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *pressioneButton;
 @property (weak, nonatomic) IBOutlet UIButton *microButton;
 @property (weak, nonatomic) IBOutlet UIButton *normaleButton;
