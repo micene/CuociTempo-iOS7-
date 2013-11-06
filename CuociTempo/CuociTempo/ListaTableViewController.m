@@ -27,7 +27,7 @@
     NSLog(@"table title %@",self.title);
     
 
-    NSFetchedResultsController *fRC = [[DataManager sharedClass]fetchedEntityWithClassName:@"Alimento" sortDescriptorWithKey:@"name" sectionNameKeyPath:@"tipo.nametype" setPredicate:[NSPredicate predicateWithFormat:@"ANY cotturas.type == %@",self.title]];
+    NSFetchedResultsController *fRC = [[DataManager sharedClass]fetchedEntityWithClassName:@"Alimento" sortDescriptorWithKey:@"tipo.nametype" sectionNameKeyPath:@"tipo.nametype" setPredicate:[NSPredicate predicateWithFormat:@"ANY cotturas.type == %@",self.title]];
     
     NSError *error;
     if(![fRC performFetch:&error]){
@@ -57,6 +57,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
+    NSLog(@"%i", [[DataManager sharedClass]numeroDiSezioni]);
     return [[DataManager sharedClass]numeroDiSezioni];
 }
 
@@ -115,6 +116,7 @@
 }
 
 
+
 -(void)back:(UISwipeGestureRecognizer*)sender{
     
     CATransition* transition = [CATransition animation];
@@ -129,14 +131,6 @@
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
-    return YES;
-}
-
-
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
 

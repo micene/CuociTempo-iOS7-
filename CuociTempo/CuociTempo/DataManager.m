@@ -112,7 +112,7 @@ static DataManager* sharedClassInstance = nil;
 
     fethcRequest.predicate = predicate;
     
-    NSFetchedResultsController *aFetchResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fethcRequest managedObjectContext:[self managedObjectContext]  sectionNameKeyPath:nil cacheName:@"Root"];
+    NSFetchedResultsController *aFetchResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fethcRequest managedObjectContext:[self managedObjectContext]  sectionNameKeyPath:sectionNameKeypath cacheName:@"Root"];
     
     _fetchedResultsController.delegate = self;
         

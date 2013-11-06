@@ -18,13 +18,6 @@
 		D10B9CD51804A93600958B59 /* ListaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D10B9CD41804A93600958B59 /* ListaTableViewController.m */; };
 		D12FA8F818041BA50047B5AC /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D12FA8F718041BA50047B5AC /* HomeViewController.m */; };
 		D12FA945180489620047B5AC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12FA944180489620047B5AC /* QuartzCore.framework */; };
-		D136C5C8182264DD00FDB43C /* CuociTempo.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = D136C5C5182264DD00FDB43C /* CuociTempo.sqlite */; };
-		D136C5C9182264DD00FDB43C /* CuociTempo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D136C5C6182264DD00FDB43C /* CuociTempo.xcdatamodeld */; };
-		D136C5CC182264EB00FDB43C /* Peso.m in Sources */ = {isa = PBXBuildFile; fileRef = D136C5CB182264EB00FDB43C /* Peso.m */; };
-		D136C5CF182264EC00FDB43C /* Alimento.m in Sources */ = {isa = PBXBuildFile; fileRef = D136C5CE182264EC00FDB43C /* Alimento.m */; };
-		D136C5D2182264EC00FDB43C /* Cottura.m in Sources */ = {isa = PBXBuildFile; fileRef = D136C5D1182264EC00FDB43C /* Cottura.m */; };
-		D136C5D5182264EC00FDB43C /* Tempo.m in Sources */ = {isa = PBXBuildFile; fileRef = D136C5D4182264EC00FDB43C /* Tempo.m */; };
-		D136C5D8182264EC00FDB43C /* Tipo.m in Sources */ = {isa = PBXBuildFile; fileRef = D136C5D7182264EC00FDB43C /* Tipo.m */; };
 		D1972677181407C30056BBC6 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D1972676181407C30056BBC6 /* DataManager.m */; };
 		D1A7A1D51804ABD70087F973 /* GrigliaCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A7A1D41804ABD70087F973 /* GrigliaCollectionViewController.m */; };
 		D1ADCFDE18054FAA00B330E2 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1ADCFDD18054FAA00B330E2 /* SearchViewController.m */; };
@@ -42,6 +35,14 @@
 		D1B17A5A180339D60067B32D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B17A3E180339D50067B32D /* CoreData.framework */; };
 		D1B17A62180339D60067B32D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D1B17A60180339D60067B32D /* InfoPlist.strings */; };
 		D1B17A64180339D60067B32D /* CuociTempoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B17A63180339D60067B32D /* CuociTempoTests.m */; };
+		D1E692E01822EBF300C1CD6A /* pentolaPressione.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D1E692DF1822EBF300C1CD6A /* pentolaPressione.jpg */; };
+		D1E692E41822F43700C1CD6A /* CuociTempo.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = D1E692E11822F43700C1CD6A /* CuociTempo.sqlite */; };
+		D1E692E51822F43700C1CD6A /* CuociTempo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1E692E21822F43700C1CD6A /* CuociTempo.xcdatamodeld */; };
+		D1E692E81822F4A100C1CD6A /* Alimento.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E692E71822F4A100C1CD6A /* Alimento.m */; };
+		D1E692EB1822F4A200C1CD6A /* Tipo.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E692EA1822F4A200C1CD6A /* Tipo.m */; };
+		D1E692EE1822F4A300C1CD6A /* Tempo.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E692ED1822F4A300C1CD6A /* Tempo.m */; };
+		D1E692F11822F4A300C1CD6A /* Peso.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E692F01822F4A300C1CD6A /* Peso.m */; };
+		D1E692F41822F4A300C1CD6A /* Cottura.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E692F31822F4A300C1CD6A /* Cottura.m */; };
 		D1F3C1801806D34B00BF5DD5 /* GNWheelView.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F3C17D1806D34B00BF5DD5 /* GNWheelView.m */; };
 		D1F3C1811806D34B00BF5DD5 /* GNWheelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F3C17F1806D34B00BF5DD5 /* GNWheelViewController.m */; };
 		D1F3C1831806D74A00BF5DD5 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1F3C1821806D74A00BF5DD5 /* MainStoryboard.storyboard */; };
@@ -75,18 +76,6 @@
 		D12FA8F618041BA50047B5AC /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		D12FA8F718041BA50047B5AC /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		D12FA944180489620047B5AC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		D136C5C5182264DD00FDB43C /* CuociTempo.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = CuociTempo.sqlite; sourceTree = "<group>"; };
-		D136C5C7182264DD00FDB43C /* CuociTempo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CuociTempo.xcdatamodel; sourceTree = "<group>"; };
-		D136C5CA182264EB00FDB43C /* Peso.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Peso.h; sourceTree = "<group>"; };
-		D136C5CB182264EB00FDB43C /* Peso.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Peso.m; sourceTree = "<group>"; };
-		D136C5CD182264EB00FDB43C /* Alimento.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alimento.h; sourceTree = "<group>"; };
-		D136C5CE182264EC00FDB43C /* Alimento.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alimento.m; sourceTree = "<group>"; };
-		D136C5D0182264EC00FDB43C /* Cottura.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cottura.h; sourceTree = "<group>"; };
-		D136C5D1182264EC00FDB43C /* Cottura.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cottura.m; sourceTree = "<group>"; };
-		D136C5D3182264EC00FDB43C /* Tempo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tempo.h; sourceTree = "<group>"; };
-		D136C5D4182264EC00FDB43C /* Tempo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tempo.m; sourceTree = "<group>"; };
-		D136C5D6182264EC00FDB43C /* Tipo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tipo.h; sourceTree = "<group>"; };
-		D136C5D7182264EC00FDB43C /* Tipo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tipo.m; sourceTree = "<group>"; };
 		D1972675181407C30056BBC6 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; wrapsLines = 1; };
 		D1972676181407C30056BBC6 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; wrapsLines = 1; };
 		D19C4A351818437400F65A5D /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -110,6 +99,19 @@
 		D1B17A5F180339D60067B32D /* CuociTempoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CuociTempoTests-Info.plist"; sourceTree = "<group>"; };
 		D1B17A61180339D60067B32D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D1B17A63180339D60067B32D /* CuociTempoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CuociTempoTests.m; sourceTree = "<group>"; };
+		D1E692DF1822EBF300C1CD6A /* pentolaPressione.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pentolaPressione.jpg; sourceTree = "<group>"; };
+		D1E692E11822F43700C1CD6A /* CuociTempo.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = CuociTempo.sqlite; sourceTree = "<group>"; };
+		D1E692E31822F43700C1CD6A /* CuociTempo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CuociTempo.xcdatamodel; sourceTree = "<group>"; };
+		D1E692E61822F4A100C1CD6A /* Alimento.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alimento.h; sourceTree = "<group>"; };
+		D1E692E71822F4A100C1CD6A /* Alimento.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alimento.m; sourceTree = "<group>"; };
+		D1E692E91822F4A200C1CD6A /* Tipo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tipo.h; sourceTree = "<group>"; };
+		D1E692EA1822F4A200C1CD6A /* Tipo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tipo.m; sourceTree = "<group>"; };
+		D1E692EC1822F4A300C1CD6A /* Tempo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tempo.h; sourceTree = "<group>"; };
+		D1E692ED1822F4A300C1CD6A /* Tempo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tempo.m; sourceTree = "<group>"; };
+		D1E692EF1822F4A300C1CD6A /* Peso.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Peso.h; sourceTree = "<group>"; };
+		D1E692F01822F4A300C1CD6A /* Peso.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Peso.m; sourceTree = "<group>"; };
+		D1E692F21822F4A300C1CD6A /* Cottura.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cottura.h; sourceTree = "<group>"; };
+		D1E692F31822F4A300C1CD6A /* Cottura.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cottura.m; sourceTree = "<group>"; };
 		D1F3C17C1806D34B00BF5DD5 /* GNWheelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNWheelView.h; sourceTree = "<group>"; };
 		D1F3C17D1806D34B00BF5DD5 /* GNWheelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNWheelView.m; sourceTree = "<group>"; };
 		D1F3C17E1806D34B00BF5DD5 /* GNWheelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNWheelViewController.h; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 		D1013BFA180828310016DBA6 /* Immagini */ = {
 			isa = PBXGroup;
 			children = (
+				D1E692DF1822EBF300C1CD6A /* pentolaPressione.jpg */,
 				D1ADCFDF18055E4300B330E2 /* cuocitempo.jpg */,
 				D1013BEE180828270016DBA6 /* Racing_Copri_Lancetta.png */,
 				D1013BEF180828270016DBA6 /* Racing_Copri_Lancetta@2x.png */,
@@ -230,18 +233,18 @@
 		D1AC9665181584F00021A627 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D136C5C5182264DD00FDB43C /* CuociTempo.sqlite */,
-				D136C5C6182264DD00FDB43C /* CuociTempo.xcdatamodeld */,
-				D136C5D6182264EC00FDB43C /* Tipo.h */,
-				D136C5D7182264EC00FDB43C /* Tipo.m */,
-				D136C5D3182264EC00FDB43C /* Tempo.h */,
-				D136C5D4182264EC00FDB43C /* Tempo.m */,
-				D136C5D0182264EC00FDB43C /* Cottura.h */,
-				D136C5D1182264EC00FDB43C /* Cottura.m */,
-				D136C5CD182264EB00FDB43C /* Alimento.h */,
-				D136C5CE182264EC00FDB43C /* Alimento.m */,
-				D136C5CA182264EB00FDB43C /* Peso.h */,
-				D136C5CB182264EB00FDB43C /* Peso.m */,
+				D1E692E11822F43700C1CD6A /* CuociTempo.sqlite */,
+				D1E692E21822F43700C1CD6A /* CuociTempo.xcdatamodeld */,
+				D1E692F21822F4A300C1CD6A /* Cottura.h */,
+				D1E692F31822F4A300C1CD6A /* Cottura.m */,
+				D1E692EF1822F4A300C1CD6A /* Peso.h */,
+				D1E692F01822F4A300C1CD6A /* Peso.m */,
+				D1E692EC1822F4A300C1CD6A /* Tempo.h */,
+				D1E692ED1822F4A300C1CD6A /* Tempo.m */,
+				D1E692E91822F4A200C1CD6A /* Tipo.h */,
+				D1E692EA1822F4A200C1CD6A /* Tipo.m */,
+				D1E692E61822F4A100C1CD6A /* Alimento.h */,
+				D1E692E71822F4A100C1CD6A /* Alimento.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -409,13 +412,14 @@
 				D1013BF4180828270016DBA6 /* Racing_Copri_Lancetta.png in Resources */,
 				D1013BF7180828270016DBA6 /* Racing_header_bg@2x.png in Resources */,
 				D1F3C1831806D74A00BF5DD5 /* MainStoryboard.storyboard in Resources */,
-				D136C5C8182264DD00FDB43C /* CuociTempo.sqlite in Resources */,
 				D1013BF8180828270016DBA6 /* Racing_Lancetta.png in Resources */,
 				D1013BF6180828270016DBA6 /* Racing_header_bg.png in Resources */,
 				D1B17A45180339D60067B32D /* InfoPlist.strings in Resources */,
+				D1E692E01822EBF300C1CD6A /* pentolaPressione.jpg in Resources */,
 				D1013BF5180828270016DBA6 /* Racing_Copri_Lancetta@2x.png in Resources */,
 				D1F3C1851806D93D00BF5DD5 /* ThirdStoryboard.storyboard in Resources */,
 				D1B17A50180339D60067B32D /* Images.xcassets in Resources */,
+				D1E692E41822F43700C1CD6A /* CuociTempo.sqlite in Resources */,
 				D1013BF9180828270016DBA6 /* Racing_Lancetta@2x.png in Resources */,
 				D10B9CCF1804A8DA00958B59 /* SecondStoryboard.storyboard in Resources */,
 			);
@@ -436,22 +440,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D136C5CC182264EB00FDB43C /* Peso.m in Sources */,
 				D10B9CD51804A93600958B59 /* ListaTableViewController.m in Sources */,
 				D1ADCFDE18054FAA00B330E2 /* SearchViewController.m in Sources */,
 				D1013BED180822AC0016DBA6 /* TimerViewController.m in Sources */,
-				D136C5D2182264EC00FDB43C /* Cottura.m in Sources */,
-				D136C5C9182264DD00FDB43C /* CuociTempo.xcdatamodeld in Sources */,
+				D1E692E51822F43700C1CD6A /* CuociTempo.xcdatamodeld in Sources */,
 				D1A7A1D51804ABD70087F973 /* GrigliaCollectionViewController.m in Sources */,
-				D136C5D5182264EC00FDB43C /* Tempo.m in Sources */,
 				D1FE7F19181DB92300A49733 /* AppDelegate.m in Sources */,
 				D1B17A47180339D60067B32D /* main.m in Sources */,
+				D1E692EB1822F4A200C1CD6A /* Tipo.m in Sources */,
+				D1E692F11822F4A300C1CD6A /* Peso.m in Sources */,
 				D1F3C1801806D34B00BF5DD5 /* GNWheelView.m in Sources */,
 				D12FA8F818041BA50047B5AC /* HomeViewController.m in Sources */,
-				D136C5D8182264EC00FDB43C /* Tipo.m in Sources */,
 				D1972677181407C30056BBC6 /* DataManager.m in Sources */,
 				D1F3C1811806D34B00BF5DD5 /* GNWheelViewController.m in Sources */,
-				D136C5CF182264EC00FDB43C /* Alimento.m in Sources */,
+				D1E692EE1822F4A300C1CD6A /* Tempo.m in Sources */,
+				D1E692F41822F4A300C1CD6A /* Cottura.m in Sources */,
+				D1E692E81822F4A100C1CD6A /* Alimento.m in Sources */,
 				D1F3C1881806D99600BF5DD5 /* PesoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -741,12 +745,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		D136C5C6182264DD00FDB43C /* CuociTempo.xcdatamodeld */ = {
+		D1E692E21822F43700C1CD6A /* CuociTempo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				D136C5C7182264DD00FDB43C /* CuociTempo.xcdatamodel */,
+				D1E692E31822F43700C1CD6A /* CuociTempo.xcdatamodel */,
 			);
-			currentVersion = D136C5C7182264DD00FDB43C /* CuociTempo.xcdatamodel */;
+			currentVersion = D1E692E31822F43700C1CD6A /* CuociTempo.xcdatamodel */;
 			path = CuociTempo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

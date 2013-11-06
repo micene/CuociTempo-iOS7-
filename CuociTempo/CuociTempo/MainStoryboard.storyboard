@@ -9,8 +9,8 @@
             <objects>
                 <viewController storyboardIdentifier="Search" id="AgL-FY-HV3" customClass="SearchViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7Mx-Yg-b4C"/>
-                        <viewControllerLayoutGuide type="bottom" id="IOe-XC-m7W"/>
+                        <viewControllerLayoutGuide type="top" id="bWu-bU-tlv"/>
+                        <viewControllerLayoutGuide type="bottom" id="FzJ-eW-6gY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="o1d-hv-HHf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -71,25 +71,15 @@
             <objects>
                 <viewController id="1UP-wY-MsS" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="AIc-5W-Nh1"/>
-                        <viewControllerLayoutGuide type="bottom" id="pAq-GQ-wIR"/>
+                        <viewControllerLayoutGuide type="top" id="czC-0C-Tl7"/>
+                        <viewControllerLayoutGuide type="bottom" id="XR6-h7-f6h"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Tyw-81-QuN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8OC-Gu-JMb">
-                                <rect key="frame" x="0.0" y="0.0" width="160" height="400"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.2885450108" green="1" blue="0.14253111160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="Pressione"/>
-                                <connections>
-                                    <action selector="pressionePushed:" destination="1UP-wY-MsS" eventType="touchUpInside" id="RfC-8S-ZxK"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQs-gZ-mXu">
-                                <rect key="frame" x="160" y="0.0" width="160" height="400"/>
+                                <rect key="frame" x="160" y="0.0" width="160" height="313"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -99,7 +89,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BF1-AF-qdr">
-                                <rect key="frame" x="0.0" y="400" width="320" height="168"/>
+                                <rect key="frame" x="0.0" y="312" width="320" height="168"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Microonde">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -116,6 +106,10 @@
                                     <outlet property="delegate" destination="1UP-wY-MsS" id="ldV-r7-Zlo"/>
                                 </connections>
                             </searchBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pentolaPressione.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="egR-EC-8gv">
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="313"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -127,7 +121,6 @@
                     <connections>
                         <outlet property="microButton" destination="BF1-AF-qdr" id="fyH-of-5JF"/>
                         <outlet property="normaleButton" destination="uQs-gZ-mXu" id="UGf-5O-Qsd"/>
-                        <outlet property="pressioneButton" destination="8OC-Gu-JMb" id="DnO-Tl-08b"/>
                         <outlet property="searchBar" destination="zfA-65-zcm" id="4QN-Fv-m6d"/>
                         <outlet property="searchDisplayController" destination="95Y-it-ZjT" id="cwL-1f-3th"/>
                         <outlet property="swipeSearch" destination="Ido-Qk-dpO" id="AXi-g1-iyI"/>
@@ -152,8 +145,8 @@
             <objects>
                 <viewController storyboardIdentifier="Wheel" id="A1B-gj-1zQ" customClass="GNWheelViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="s6s-5t-i11"/>
-                        <viewControllerLayoutGuide type="bottom" id="dbm-aM-LPk"/>
+                        <viewControllerLayoutGuide type="top" id="S0a-ye-Lc4"/>
+                        <viewControllerLayoutGuide type="bottom" id="O2a-L2-KcD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="h0H-09-g6i" customClass="GNWheelView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -169,8 +162,11 @@
         <!--Navigation Controller-->
         <scene sceneID="zwd-Ls-9ko">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="z3y-in-6Va" sceneMemberID="viewController">
+                <navigationController wantsFullScreenLayout="YES" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="z3y-in-6Va" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lTr-5f-FVM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -185,6 +181,9 @@
             <point key="canvasLocation" x="116" y="17"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pentolaPressione.jpg" width="600" height="488"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

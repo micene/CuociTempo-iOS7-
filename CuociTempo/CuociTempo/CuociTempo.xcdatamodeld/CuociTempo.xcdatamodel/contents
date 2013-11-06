@@ -11,7 +11,7 @@
         <attribute name="cotturaid" attributeType="Integer 64" syncable="YES"/>
         <attribute name="type" attributeType="String" syncable="YES"/>
         <relationship name="alimentos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Alimento" inverseName="cotturas" inverseEntity="Alimento" syncable="YES"/>
-        <relationship name="tempos" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="Tempo" inverseName="cottura" inverseEntity="Tempo" syncable="YES"/>
+        <relationship name="tempos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tempo" inverseName="cottura" inverseEntity="Tempo" syncable="YES"/>
     </entity>
     <entity name="Peso" representedClassName="Peso" syncable="YES">
         <attribute name="pesoid" attributeType="Integer 64" syncable="YES"/>
@@ -21,9 +21,9 @@
     <entity name="Tempo" representedClassName="Tempo" syncable="YES">
         <attribute name="tempoid" attributeType="Integer 64" syncable="YES"/>
         <attribute name="time" attributeType="String" syncable="YES"/>
-        <relationship name="alimento" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="Alimento" inverseName="tempos" inverseEntity="Alimento" syncable="YES"/>
+        <relationship name="alimento" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Alimento" inverseName="tempos" inverseEntity="Alimento" syncable="YES"/>
         <relationship name="cottura" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cottura" inverseName="tempos" inverseEntity="Cottura" syncable="YES"/>
-        <relationship name="peso" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Peso" inverseName="tempos" inverseEntity="Peso" syncable="YES"/>
+        <relationship name="peso" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Peso" inverseName="tempos" inverseEntity="Peso" syncable="YES"/>
     </entity>
     <entity name="Tipo" representedClassName="Tipo" syncable="YES">
         <attribute name="nametype" attributeType="String" syncable="YES"/>
@@ -31,10 +31,10 @@
         <relationship name="alimentos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Alimento" inverseName="tipo" inverseEntity="Alimento" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Tipo" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Alimento" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Peso" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Cottura" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Tempo" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Tipo" positionX="160" positionY="192" width="128" height="88"/>
+        <element name="Alimento" positionX="160" positionY="192" width="128" height="118"/>
+        <element name="Peso" positionX="160" positionY="192" width="128" height="88"/>
+        <element name="Cottura" positionX="160" positionY="192" width="128" height="103"/>
+        <element name="Tempo" positionX="160" positionY="192" width="128" height="120"/>
     </elements>
 </model>

@@ -22,8 +22,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [[DataManager sharedClass]setup];
-
     
     self.searchBar.delegate = self;
     self.searchBar.showsCancelButton = YES;

@@ -124,7 +124,7 @@
 //-----------------------------------
 //numero di righe
 - (unsigned int)numberOfRowsOfWheelView:(GNWheelView *)wheelView{
-    
+    NSLog(@"%i",[[DataManager sharedClass]numerodiEntita:0 predicate:[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"ANY cotturas.type == '%@'",self.title]]]);
     return [[DataManager sharedClass]numerodiEntita:0 predicate:[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"ANY cotturas.type == '%@'",self.title]]];
 }
 //cella che appare
