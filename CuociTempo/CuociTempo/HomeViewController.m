@@ -10,6 +10,7 @@
 #import "DataManager.h"
 
 #import "SearchViewController.h"
+#import "SMViewController.h"
 #import "GNWheelView.h"
 #import "GNWheelViewController.h"
 
@@ -64,15 +65,16 @@
 }
 - (IBAction)normalePushed:(id)sender {
     
-    GNWheelViewController *wheel = [self.storyboard instantiateViewControllerWithIdentifier:@"Wheel"];
-    wheel.title = [sender currentTitle];
+    /*GNWheelViewController *wheel = [self.storyboard instantiateViewControllerWithIdentifier:@"Wheel"];
+    wheel.title = [sender currentTitle];*/
+    SMViewController *typeWeel = [self.storyboard instantiateViewControllerWithIdentifier:@"TypeWheel"];
     CATransition* transition = [CATransition animation];
     transition.duration = 0.6;
     transition.type = kCATransitionPush;
     transition.subtype = kCATransitionFromRight;
     
     [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-    [self.navigationController pushViewController:wheel animated:NO];
+    [self.navigationController pushViewController:typeWeel animated:NO];
 }
 
 

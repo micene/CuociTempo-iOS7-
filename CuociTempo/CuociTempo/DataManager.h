@@ -23,8 +23,7 @@
 -(NSManagedObjectContext*)managedObjectContext;
 
 
-
--(NSInteger)numerodiEntita:(NSInteger)sezione predicate:(NSPredicate*)predicate;
+-(NSInteger)numerodiEntita:(NSString*)className sezione:(NSInteger)sezione predicate:(NSPredicate *)predicate;
 -(NSManagedObject*)fetchRequestPerCella:(unsigned int)cell predicate:(NSPredicate*)predicate;
 
 

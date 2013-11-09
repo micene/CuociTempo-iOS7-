@@ -31,10 +31,10 @@
         <relationship name="alimentos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Alimento" inverseName="tipo" inverseEntity="Alimento" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Tipo" positionX="160" positionY="192" width="128" height="88"/>
-        <element name="Alimento" positionX="160" positionY="192" width="128" height="118"/>
-        <element name="Peso" positionX="160" positionY="192" width="128" height="88"/>
-        <element name="Cottura" positionX="160" positionY="192" width="128" height="103"/>
-        <element name="Tempo" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="Tipo" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Alimento" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Peso" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Cottura" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Tempo" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

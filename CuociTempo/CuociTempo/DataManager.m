@@ -34,9 +34,16 @@ static DataManager* sharedClassInstance = nil;
     
     NSManagedObjectContext *context = [self managedObjectContext];
     
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Alimento"];
-    fetchRequest.predicate =[ NSPredicate predicateWithFormat:@"ANY cotturas.type == %@",[NSString stringWithFormat:@"Pressione"]];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Tipo"];
+   // fetchRequest.predicate =[ NSPredicate predicateWithFormat:@"ANY cotturas.type == %@",[NSString stringWithFormat:@"Pressione"]];
    // fetchRequest.predicate =[ NSPredicate predicateWithFormat:@"cottura.type== %@",[NSString stringWithFormat:@"microonde"]];
+//    fetchRequest.sortDescriptors = [NSSortDescriptor sortDescriptorWithKey:@"nametype" ascending:NO];
+  //  fetchRequest.predicate = [NSPredicate predicateWithFormat:@"tipoid == alimentos.tipo.tipoid AND alimentos.alimentoid == alimentos.cotturas.alimentos.alimentoid WHERE cotturas.type == %@",[NSString stringWithFormat:@"Pressione"]];
+    
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"(0 != SUBQUERY(alimentos, $x, (0 != SUBQUERY($x.cotturas, $y, $y.type==%@).@count)).@count)",[NSString stringWithFormat:@"Pressione"]];
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc]
+                              initWithKey:@"nametype" ascending:NO];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:nil];
     
   /*for (Cottura *cottura in fetchedObjects) {
@@ -44,9 +51,9 @@ static DataManager* sharedClassInstance = nil;
         NSLog(@"Alimenti :%@",[cottura.alimentoCottura valueForKey:@"name"]);
     }*/
     NSLog(@"entro %i",fetchedObjects.count);
-   for (Alimento *tempo in fetchedObjects) {
-        NSLog(@"name:%@",tempo.name);
-       //NSLog(@"cottura %@",[alimento.cotturaAlimento valueForKey:@"cotturaType"]);
+    for (Tipo *tempo in fetchedObjects) {
+        NSLog(@"tipo name  %@",tempo.nametype);
+
     }
     
     
@@ -73,11 +80,11 @@ static DataManager* sharedClassInstance = nil;
 
 
 
--(NSInteger)numerodiEntita:(NSInteger)sezione predicate:(NSPredicate *)predicate{
+-(NSInteger)numerodiEntita:(NSString*)className sezione:(NSInteger)sezione predicate:(NSPredicate *)predicate{
     
     NSManagedObjectContext *context = [self managedObjectContext];
     
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Alimento"];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:className];
 //    fetchRequest.predicate =[ NSPredicate predicateWithFormat:@"ANY cotturas.type == %@",[NSString stringWithFormat:@"Pressione"]];
     fetchRequest.predicate = predicate;
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:nil];
