@@ -16,9 +16,6 @@
 		D1013BF9180828270016DBA6 /* Racing_Lancetta@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1013BF3180828270016DBA6 /* Racing_Lancetta@2x.png */; };
 		D10B9CCF1804A8DA00958B59 /* SecondStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D10B9CCE1804A8DA00958B59 /* SecondStoryboard.storyboard */; };
 		D10B9CD51804A93600958B59 /* ListaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D10B9CD41804A93600958B59 /* ListaTableViewController.m */; };
-		D1106763182E88BA002819DB /* SMCLove.m in Sources */ = {isa = PBXBuildFile; fileRef = D110675F182E88BA002819DB /* SMCLove.m */; };
-		D1106764182E88BA002819DB /* SMRotaryWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = D1106762182E88BA002819DB /* SMRotaryWheel.m */; };
-		D1106767182E88DC002819DB /* SMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1106766182E88DC002819DB /* SMViewController.m */; };
 		D1106774182E897D002819DB /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = D1106769182E897D002819DB /* bg.png */; };
 		D1106775182E897D002819DB /* centerButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D110676A182E897D002819DB /* centerButton.png */; };
 		D1106776182E897D002819DB /* icon0.png in Resources */ = {isa = PBXBuildFile; fileRef = D110676B182E897D002819DB /* icon0.png */; };
@@ -56,6 +53,8 @@
 		D1B17A5A180339D60067B32D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B17A3E180339D50067B32D /* CoreData.framework */; };
 		D1B17A62180339D60067B32D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D1B17A60180339D60067B32D /* InfoPlist.strings */; };
 		D1B17A64180339D60067B32D /* CuociTempoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B17A63180339D60067B32D /* CuociTempoTests.m */; };
+		D1DEF20C182FF37900F30CC4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1DEF20B182FF37900F30CC4 /* ViewController.m */; };
+		D1DEF210182FFFF200F30CC4 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = D1DEF20F182FFFF200F30CC4 /* XYPieChart.m */; };
 		D1E692E01822EBF300C1CD6A /* pentolaPressione.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D1E692DF1822EBF300C1CD6A /* pentolaPressione.jpg */; };
 		D1F3C1801806D34B00BF5DD5 /* GNWheelView.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F3C17D1806D34B00BF5DD5 /* GNWheelView.m */; };
 		D1F3C1811806D34B00BF5DD5 /* GNWheelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F3C17F1806D34B00BF5DD5 /* GNWheelViewController.m */; };
@@ -87,13 +86,6 @@
 		D10B9CCE1804A8DA00958B59 /* SecondStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SecondStoryboard.storyboard; sourceTree = "<group>"; };
 		D10B9CD31804A93600958B59 /* ListaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListaTableViewController.h; sourceTree = "<group>"; };
 		D10B9CD41804A93600958B59 /* ListaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListaTableViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
-		D110675E182E88BA002819DB /* SMCLove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCLove.h; sourceTree = "<group>"; };
-		D110675F182E88BA002819DB /* SMCLove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCLove.m; sourceTree = "<group>"; };
-		D1106760182E88BA002819DB /* SMRotaryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRotaryProtocol.h; sourceTree = "<group>"; };
-		D1106761182E88BA002819DB /* SMRotaryWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRotaryWheel.h; sourceTree = "<group>"; };
-		D1106762182E88BA002819DB /* SMRotaryWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRotaryWheel.m; sourceTree = "<group>"; };
-		D1106765182E88DC002819DB /* SMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMViewController.h; sourceTree = "<group>"; };
-		D1106766182E88DC002819DB /* SMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
 		D1106769182E897D002819DB /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		D110676A182E897D002819DB /* centerButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = centerButton.png; sourceTree = "<group>"; };
 		D110676B182E897D002819DB /* icon0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon0.png; sourceTree = "<group>"; };
@@ -143,6 +135,10 @@
 		D1B17A5F180339D60067B32D /* CuociTempoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CuociTempoTests-Info.plist"; sourceTree = "<group>"; };
 		D1B17A61180339D60067B32D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D1B17A63180339D60067B32D /* CuociTempoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CuociTempoTests.m; sourceTree = "<group>"; };
+		D1DEF20A182FF37900F30CC4 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ../ViewController.h; sourceTree = "<group>"; };
+		D1DEF20B182FF37900F30CC4 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../ViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
+		D1DEF20E182FFFF200F30CC4 /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
+		D1DEF20F182FFFF200F30CC4 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		D1E692DF1822EBF300C1CD6A /* pentolaPressione.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pentolaPressione.jpg; sourceTree = "<group>"; };
 		D1F3C17C1806D34B00BF5DD5 /* GNWheelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNWheelView.h; sourceTree = "<group>"; };
 		D1F3C17D1806D34B00BF5DD5 /* GNWheelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNWheelView.m; sourceTree = "<group>"; };
@@ -221,13 +217,7 @@
 		D10B9CD81804A95D00958B59 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D110675E182E88BA002819DB /* SMCLove.h */,
-				D110675F182E88BA002819DB /* SMCLove.m */,
-				D1106760182E88BA002819DB /* SMRotaryProtocol.h */,
-				D1106761182E88BA002819DB /* SMRotaryWheel.h */,
-				D1106762182E88BA002819DB /* SMRotaryWheel.m */,
-				D1106765182E88DC002819DB /* SMViewController.h */,
-				D1106766182E88DC002819DB /* SMViewController.m */,
+				D1DEF20D182FFFF200F30CC4 /* XYPieChart */,
 				D11B40E51811C29800CEB7D7 /* Maybe */,
 				D12FA8F618041BA50047B5AC /* HomeViewController.h */,
 				D12FA8F718041BA50047B5AC /* HomeViewController.m */,
@@ -389,6 +379,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D1DEF20D182FFFF200F30CC4 /* XYPieChart */ = {
+			isa = PBXGroup;
+			children = (
+				D1DEF20E182FFFF200F30CC4 /* XYPieChart.h */,
+				D1DEF20F182FFFF200F30CC4 /* XYPieChart.m */,
+				D1DEF20A182FF37900F30CC4 /* ViewController.h */,
+				D1DEF20B182FF37900F30CC4 /* ViewController.m */,
+			);
+			path = XYPieChart;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -513,11 +514,9 @@
 				D10B9CD51804A93600958B59 /* ListaTableViewController.m in Sources */,
 				D1ADCFDE18054FAA00B330E2 /* SearchViewController.m in Sources */,
 				D1013BED180822AC0016DBA6 /* TimerViewController.m in Sources */,
-				D1106764182E88BA002819DB /* SMRotaryWheel.m in Sources */,
 				D1A7A1D51804ABD70087F973 /* GrigliaCollectionViewController.m in Sources */,
 				D1FE7F19181DB92300A49733 /* AppDelegate.m in Sources */,
 				D1B17A47180339D60067B32D /* main.m in Sources */,
-				D1106767182E88DC002819DB /* SMViewController.m in Sources */,
 				D1106790182EB9AE002819DB /* Tempo.m in Sources */,
 				D110678D182EB9AE002819DB /* Alimento.m in Sources */,
 				D1106787182EB9AD002819DB /* Peso.m in Sources */,
@@ -527,7 +526,8 @@
 				D1106793182EB9AE002819DB /* Cottura.m in Sources */,
 				D110678A182EB9AE002819DB /* Tipo.m in Sources */,
 				D1972677181407C30056BBC6 /* DataManager.m in Sources */,
-				D1106763182E88BA002819DB /* SMCLove.m in Sources */,
+				D1DEF20C182FF37900F30CC4 /* ViewController.m in Sources */,
+				D1DEF210182FFFF200F30CC4 /* XYPieChart.m in Sources */,
 				D1F3C1811806D34B00BF5DD5 /* GNWheelViewController.m in Sources */,
 				D1F3C1881806D99600BF5DD5 /* PesoViewController.m in Sources */,
 			);

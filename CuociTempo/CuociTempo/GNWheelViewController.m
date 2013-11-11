@@ -73,22 +73,10 @@
     
     [UIView commitAnimations];
     
-   /* NSFetchedResultsController *fRC;
-    
-    fRC = [[DataManager sharedClass]fetchedEntityWithClassName:@"Alimento" sortDescriptorWithKey:@"name" sectionNameKeyPath:nil setPredicate:[NSPredicate predicateWithFormat:@"ANY cotturas.type == %@",self.title] delegate:self.nFSDelegate];
-
-    
-    NSError *error;
-    if (![fRC performFetch:&error]) {
-        NSLog(@"%@ %@",error,[error userInfo]);
-    }*/
-    
 }
 
 //qnd la view e connessa
 - (void)viewDidAppear:(BOOL)animated{
-    
-    NSLog(@"b");
     
     self.wheelView.delegate = self;
     
@@ -103,7 +91,6 @@
     //se l animazione dell imageview e' finita allora mostro la ruota
     if([animationID isEqualToString:@"fadeIn"]){
         
-        NSLog(@"c");
         [self.wheelView reloadData];
         
     }
@@ -122,28 +109,33 @@
     return NO;
 }
 //-----------------------------------
+
 //numero di righe
 - (unsigned int)numberOfRowsOfWheelView:(GNWheelView *)wheelView{
+    
+    NSLog(@"numero di oggetti %i",[[DataManager sharedClass]numerodiEntita:@"Alimento" sezione:0 predicate:[NSPredicate predicateWithFormat:@"(0 != SUBQUERY(tipo, $x,$x.nametype == %@))",self.title]]);
 
-    return [[DataManager sharedClass]numerodiEntita:@"Alimento" sezione:0 predicate:[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"ANY cotturas.type == '%@'",self.title]]];
+    return [[DataManager sharedClass]numerodiEntita:@"Alimento" sezione:0 predicate:[NSPredicate predicateWithFormat:@"(0 != SUBQUERY(tipo, $x,$x.nametype == %@))",self.title]];
+    
 
 }
+
 //cella che appare
 - (UIView *)wheelView:(GNWheelView *)wheelView viewForRowAtIndex:(unsigned int)index{
    
     
-     Alimento *alimento = (Alimento*)[[DataManager sharedClass]fetchRequestPerCella:index predicate:[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"ANY cotturas.type == '%@'",self.title]]];
-     UILabel *label = [[UILabel alloc]initWithFrame:wheelView.frame];
+    Alimento *alimento = (Alimento*)[[DataManager sharedClass]fetchRequestPerCella:@"Alimento" cell:index predicate:[NSPredicate predicateWithFormat:@"(0 != SUBQUERY(tipo, $x,$x.nametype == %@))",self.title]];
+    UILabel *label = [[UILabel alloc]initWithFrame:wheelView.frame];
      
-     label.text = alimento.name;
-     
-     return label;
+    label.text = alimento.name;
+    return label;
     
 }
+
 //qnd seleziono una cella
-- (void)wheelView:(GNWheelView *)wheelView didSelectedRowAtIndex:(unsigned int)index{
+/*- (void)wheelView:(GNWheelView *)wheelView didSelectedRowAtIndex:(unsigned int)index{
     
-    Alimento *alimento = (Alimento*)[[DataManager sharedClass]fetchRequestPerCella:index predicate:[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"ANY cotturas.type == '%@'",self.title]]];
+    Alimento *alimento = (Alimento*)[[DataManager sharedClass]fetchRequestPerCella:@"Alimento" cell:index predicate:[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"ANY cotturas.type == '%@'",self.title]]];
     
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"ThirdStoryboard" bundle:nil];
 
@@ -169,8 +161,10 @@
         
     }
     
-}
+}*/
+
 //-------------------------------------
+
 //larghezza righe
 - (float)rowWidthInWheelView:(GNWheelView *)wheelView{
     
@@ -183,7 +177,9 @@
     return 83;
     
 }
+
 //--------------------------------------
+
 - (BOOL)wheelView:(GNWheelView *)wheelView shouldEnterIdleStateForRowAtIndex:(unsigned int)index animated:(BOOL *)animated{
     
     return NO;
@@ -198,7 +194,9 @@
     
     
 }
+
 //---------------------------------------
+
 -(void)goToListaFrom:(GNWheelView *)wheelView{
     
     ListaTableViewController *lista = [[UIStoryboard storyboardWithName:@"SecondStoryboard" bundle:nil]instantiateViewControllerWithIdentifier:@"Lista"];
@@ -208,7 +206,7 @@
     
 }
 
--(void)swipeToHome:(GNWheelView *)wheelView{
+-(void)swipeToType:(GNWheelView *)wheelView{
     
         CATransition* transition = [CATransition animation];
         transition.duration = 0.3;
@@ -221,10 +219,8 @@
     
     
 }
+
 //----------------------------------
-/*
- NSFetchedResultsController delegate methods to respond to additions, removals and so on.
- */
 
 
 @end

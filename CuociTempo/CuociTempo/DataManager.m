@@ -92,11 +92,11 @@ static DataManager* sharedClassInstance = nil;
     return fetchedObjects.count;
 }
 
--(NSManagedObject*)fetchRequestPerCella:(unsigned int)cell predicate:(NSPredicate *)predicate{
+-(NSManagedObject*)fetchRequestPerCella:(NSString*)className cell:(unsigned int)cell predicate:(NSPredicate *)predicate{
     
     NSManagedObjectContext *context = [self managedObjectContext];
     
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Alimento"];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:className];
   //  fetchRequest.predicate =[ NSPredicate predicateWithFormat:@"ANY cotturas.type == %@",[NSString stringWithFormat:@"Pressione"]];
     fetchRequest.predicate = predicate;
 

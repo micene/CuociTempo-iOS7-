@@ -24,7 +24,7 @@
 
 
 -(NSInteger)numerodiEntita:(NSString*)className sezione:(NSInteger)sezione predicate:(NSPredicate *)predicate;
--(NSManagedObject*)fetchRequestPerCella:(unsigned int)cell predicate:(NSPredicate*)predicate;
+-(NSManagedObject*)fetchRequestPerCella:(NSString*)className cell:(unsigned int)cell predicate:(NSPredicate *)predicate;
 
 
 

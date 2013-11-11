@@ -27,7 +27,7 @@
     NSLog(@"table title %@",self.title);
     
 
-    NSFetchedResultsController *fRC = [[DataManager sharedClass]fetchedEntityWithClassName:@"Alimento" sortDescriptorWithKey:@"tipo.nametype" sectionNameKeyPath:@"tipo.nametype" setPredicate:[NSPredicate predicateWithFormat:@"ANY cotturas.type == %@",self.title]];
+    NSFetchedResultsController *fRC = [[DataManager sharedClass]fetchedEntityWithClassName:@"Alimento" sortDescriptorWithKey:@"name" sectionNameKeyPath:nil setPredicate:[NSPredicate predicateWithFormat:@"(0 != SUBQUERY(tipo, $x,$x.nametype == %@))",self.title]];
     
     NSError *error;
     if(![fRC performFetch:&error]){
