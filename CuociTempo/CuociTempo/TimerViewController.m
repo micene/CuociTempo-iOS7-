@@ -34,9 +34,9 @@
     NSLog(@"cottura %@",self.cottura);
     
     if([self.cottura isEqualToString:@"Microonde"]){
-        ris = [[DataManager sharedClass]tempoPerAlimento:[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"cottura.type == 'Microonde' AND alimento.name == '%@' AND peso.pesoid = %i",self.title,(self.peso + 1)]]];
+        ris = [[DataManager sharedClass]tempoPerAlimento:[NSString stringWithFormat:@"cottura.type == 'Microonde' AND alimento.name == '%@' AND peso.pesoid = %i",self.title,(self.peso + 1)]];
     }else{
-        ris = [[DataManager sharedClass]tempoPerAlimento:[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"cottura.type == '%@' AND alimento.name == '%@'",self.cottura,self.title]]];
+        ris = [[DataManager sharedClass]tempoPerAlimento:[NSString stringWithFormat:@"cottura.type == '%@' AND alimento.name == '%@'",self.cottura,self.title]];
     }
     
     //Mettiamo isRunning su no perché il timer è fermo

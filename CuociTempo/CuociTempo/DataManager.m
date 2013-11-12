@@ -80,25 +80,26 @@ static DataManager* sharedClassInstance = nil;
 
 
 
--(NSInteger)numerodiEntita:(NSString*)className sezione:(NSInteger)sezione predicate:(NSPredicate *)predicate{
+-(NSInteger)numerodiEntita:(NSString*)className sezione:(NSInteger)sezione predicate:(NSString *)predicateString{
     
     NSManagedObjectContext *context = [self managedObjectContext];
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:className];
 //    fetchRequest.predicate =[ NSPredicate predicateWithFormat:@"ANY cotturas.type == %@",[NSString stringWithFormat:@"Pressione"]];
-    fetchRequest.predicate = predicate;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:predicateString];
+    
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:nil];
     
     return fetchedObjects.count;
 }
 
--(NSManagedObject*)fetchRequestPerCella:(NSString*)className cell:(unsigned int)cell predicate:(NSPredicate *)predicate{
+-(NSManagedObject*)fetchRequestPerCella:(NSString*)className cell:(unsigned int)cell predicate:(NSString *)predicateString{
     
     NSManagedObjectContext *context = [self managedObjectContext];
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:className];
   //  fetchRequest.predicate =[ NSPredicate predicateWithFormat:@"ANY cotturas.type == %@",[NSString stringWithFormat:@"Pressione"]];
-    fetchRequest.predicate = predicate;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:predicateString];
 
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:nil];
     

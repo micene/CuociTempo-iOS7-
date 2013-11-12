@@ -135,6 +135,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     self = [super initWithFrame:frame];
     if (self)
     {
+        NSLog(@"sto lanciando initiwu");
         self.backgroundColor = [UIColor clearColor];
         _pieView = [[UIView alloc] initWithFrame:frame];
         [_pieView setBackgroundColor:[UIColor clearColor]];
@@ -145,7 +146,6 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         
         _animationSpeed = 0.5;
         _startPieAngle = M_PI_2*3;
-        NSLog(@"%f",_startPieAngle);
         _selectedSliceStroke = 3.0;
         
         self.pieRadius = MIN(frame.size.width/2, frame.size.height/2) - 10;
@@ -157,9 +157,14 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         
         _showLabel = YES;
         _showPercentage = YES;
+        
+        UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToBack)];
+        
+        [swipe setDirection:UISwipeGestureRecognizerDirectionRight];
+        
+        [self addGestureRecognizer:swipe];
     }
     
-    NSLog(@"frame width %f height %f",frame.size.width,frame.size.height);
     return self;
 }
 
@@ -261,6 +266,12 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
 {
     if (_dataSource)
     {
+        UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToBack:)];
+        
+        [swipe setDirection:UISwipeGestureRecognizerDirectionRight];
+        
+        [self addGestureRecognizer:swipe];
+        
         CALayer *parentLayer = [_pieView layer];
         NSArray *slicelayers = [parentLayer sublayers];
         
@@ -387,6 +398,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
             if([_dataSource respondsToSelector:@selector(pieChart:textForSliceAtIndex:)])
             {
                 layer.text = [_dataSource pieChart:self textForSliceAtIndex:index];
+                
             }
             
             [self updateLabelForLayer:layer value:values[index]];
@@ -586,6 +598,16 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         }
     }
 }
+
+-(void)swipeToBack:(UISwipeGestureRecognizer*)sender{
+    
+    if ([_delegate respondsToSelector:@selector(swipeToHome:)]) {
+        
+        [_delegate swipeToHome:self];
+    }
+}
+
+
 #pragma mark - Selection Programmatically Without Notification
 
 - (void)setSliceSelectedAtIndex:(NSInteger)index

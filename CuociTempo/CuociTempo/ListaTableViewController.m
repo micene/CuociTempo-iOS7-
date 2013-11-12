@@ -24,9 +24,6 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"table title %@",self.title);
-    
-
     NSFetchedResultsController *fRC = [[DataManager sharedClass]fetchedEntityWithClassName:@"Alimento" sortDescriptorWithKey:@"name" sectionNameKeyPath:nil setPredicate:[NSPredicate predicateWithFormat:@"(0 != SUBQUERY(tipo, $x,$x.nametype == %@))",self.title]];
     
     NSError *error;
@@ -57,7 +54,6 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    NSLog(@"%i", [[DataManager sharedClass]numeroDiSezioni]);
     return [[DataManager sharedClass]numeroDiSezioni];
 }
 

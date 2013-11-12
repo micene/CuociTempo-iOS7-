@@ -52,7 +52,7 @@
     [super viewDidLoad];
     
     //inizializzo la imageview
-    UIImageView *cuoci = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    /*UIImageView *cuoci = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
     [self.wheelView addSubview:cuoci];
     
@@ -71,7 +71,7 @@
     
     [self.wheelView setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.5]];
     
-    [UIView commitAnimations];
+    [UIView commitAnimations];*/
     
 }
 
@@ -81,10 +81,12 @@
     self.wheelView.delegate = self;
     
     self.wheelView.idleDuration = 0;
+    
+    [self.wheelView reloadData];
 }
 
 //qnd si ferma l'animazione
-- (void)animationDidStop:(NSString *)animationID
+/*- (void)animationDidStop:(NSString *)animationID
                 finished:(NSNumber *)finished
                  context:(void *)context {
 
@@ -94,7 +96,7 @@
         [self.wheelView reloadData];
         
     }
-}
+}*/
 
 
 - (void)viewDidUnload
@@ -112,10 +114,10 @@
 
 //numero di righe
 - (unsigned int)numberOfRowsOfWheelView:(GNWheelView *)wheelView{
-    
-    NSLog(@"numero di oggetti %i",[[DataManager sharedClass]numerodiEntita:@"Alimento" sezione:0 predicate:[NSPredicate predicateWithFormat:@"(0 != SUBQUERY(tipo, $x,$x.nametype == %@))",self.title]]);
+    NSString *cottura = @"Microonde";
 
-    return [[DataManager sharedClass]numerodiEntita:@"Alimento" sezione:0 predicate:[NSPredicate predicateWithFormat:@"(0 != SUBQUERY(tipo, $x,$x.nametype == %@))",self.title]];
+    NSLog(@"numero di oggetti %i",[[DataManager sharedClass]numerodiEntita:@"Alimento" sezione:0 predicate:[NSString stringWithFormat:@"(0 != SUBQUERY(tipo,$x,$x.nametype == '%@') AND (0 != SUBQUERY(cotturas,$y,$y.type == '%@')))",self.title,cottura]]);
+    return [[DataManager sharedClass]numerodiEntita:@"Alimento" sezione:0 predicate:[NSString stringWithFormat:@"(0 != SUBQUERY(tipo,$x,$x.nametype == '%@') AND (0 != SUBQUERY(cotturas,$y,$y.type == '%@')))",self.title,cottura]];
     
 
 }
@@ -123,11 +125,13 @@
 //cella che appare
 - (UIView *)wheelView:(GNWheelView *)wheelView viewForRowAtIndex:(unsigned int)index{
    
+    NSString*cottura =@"Microonde";
+    Alimento *alimento = (Alimento*)[[DataManager sharedClass]fetchRequestPerCella:@"Alimento" cell:index predicate:[NSString stringWithFormat:@"(0 != SUBQUERY(tipo,$x,$x.nametype == '%@') AND (0 != SUBQUERY(cotturas,$y,$y.type == '%@')))",self.title,cottura]];
     
-    Alimento *alimento = (Alimento*)[[DataManager sharedClass]fetchRequestPerCella:@"Alimento" cell:index predicate:[NSPredicate predicateWithFormat:@"(0 != SUBQUERY(tipo, $x,$x.nametype == %@))",self.title]];
     UILabel *label = [[UILabel alloc]initWithFrame:wheelView.frame];
-     
+    
     label.text = alimento.name;
+    
     return label;
     
 }
@@ -206,7 +210,7 @@
     
 }
 
--(void)swipeToType:(GNWheelView *)wheelView{
+-(void)swipeToHome:(GNWheelView *)wheelView{
     
         CATransition* transition = [CATransition animation];
         transition.duration = 0.3;
@@ -215,8 +219,6 @@
         
         [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
         [self.navigationController popToRootViewControllerAnimated:NO];
-    
-    
     
 }
 

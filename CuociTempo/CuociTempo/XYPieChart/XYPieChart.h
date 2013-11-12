@@ -44,11 +44,12 @@
 - (void)pieChart:(XYPieChart *)pieChart didSelectSliceAtIndex:(NSUInteger)index;
 - (void)pieChart:(XYPieChart *)pieChart willDeselectSliceAtIndex:(NSUInteger)index;
 - (void)pieChart:(XYPieChart *)pieChart didDeselectSliceAtIndex:(NSUInteger)index;
+- (void)swipeToHome:(XYPieChart *)pieChart;
 @end
 
 @interface XYPieChart : UIView
 @property(nonatomic, weak) id<XYPieChartDataSource> dataSource;
-@property(nonatomic, weak) id<XYPieChartDelegate> delegate;
+@property(nonatomic, strong) id<XYPieChartDelegate> delegate;
 @property(nonatomic, assign) CGFloat startPieAngle;
 @property(nonatomic, assign) CGFloat animationSpeed;
 @property(nonatomic, assign) CGPoint pieCenter;

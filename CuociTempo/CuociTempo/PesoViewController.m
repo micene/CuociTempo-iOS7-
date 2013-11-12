@@ -23,8 +23,6 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"Peso Title %@",self.title);
-    
     self.swipeToBack = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back:)];
     [self.swipeToBack setDirection:(UISwipeGestureRecognizerDirectionRight)];
     [self.view addGestureRecognizer:self.swipeToBack];
@@ -33,7 +31,6 @@
 
 - (IBAction)selezionaPeso:(UISegmentedControl*)sender {
     
-    NSLog(@"%i",sender.selectedSegmentIndex);
     peso = sender.selectedSegmentIndex;
 }
 

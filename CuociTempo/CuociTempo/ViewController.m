@@ -33,7 +33,7 @@ int num;
 {
     
     [super viewDidLoad];
-    num = [[DataManager sharedClass]numerodiEntita:@"Tipo" sezione:0 predicate:[NSPredicate predicateWithFormat:@"(0 != SUBQUERY(alimentos, $x, (0 != SUBQUERY($x.cotturas, $y, $y.type==%@))))",self.title]];
+    num = [[DataManager sharedClass]numerodiEntita:@"Tipo" sezione:0 predicate:[NSString stringWithFormat:@"(0 != SUBQUERY(alimentos, $x, (0 != SUBQUERY($x.cotturas, $y, $y.type == '%@'))))",self.title]];
     
     self.slices = [NSMutableArray arrayWithCapacity:num];
     
@@ -42,13 +42,12 @@ int num;
         [_slices addObject:[NSNumber numberWithInt:1]];
     }
     
-    
     [self.pieChartRight setDelegate:self];
     [self.pieChartRight setDataSource:self];
     [self.pieChartRight setPieCenter:CGPointMake(self.pieChartRight.center.x, self.pieChartRight.center.y-50)];
     [self.pieChartRight setShowPercentage:NO];
     [self.pieChartRight setLabelColor:[UIColor blackColor]];
-    
+
     
     self.sliceColors =[NSArray arrayWithObjects:
                        [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1],
@@ -128,7 +127,6 @@ int num;
 
 - (UIColor *)pieChart:(XYPieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index
 {
-    if(pieChart == self.pieChartRight) return nil;
     return [self.sliceColors objectAtIndex:(index % self.sliceColors.count)];
 }
 
@@ -151,14 +149,25 @@ int num;
     self.selectedSliceLabel.text = [self pieChart:pieChart textForSliceAtIndex:index];
     GNWheelViewController *wheel = [self.storyboard instantiateViewControllerWithIdentifier:@"Wheel"];
     wheel.title = self.selectedSliceLabel.text;
-    [self.navigationController pushViewController:wheel animated:YES];
+    [self.navigationController pushViewController:wheel animated:NO];
 }
 
 -(NSString *)pieChart:(XYPieChart *)pieChart textForSliceAtIndex:(NSUInteger)index{
     Tipo *tipo = (Tipo*)[[DataManager sharedClass]fetchRequestPerCella:@"Tipo"
                                                                   cell:index
-                                                      predicate:[NSPredicate predicateWithFormat:@"(0 != SUBQUERY(alimentos, $x, (0 != SUBQUERY($x.cotturas, $y, $y.type==%@))))",self.title]];
+                                                      predicate:[NSString stringWithFormat:@"(0 != SUBQUERY(alimentos, $x, (0 != SUBQUERY($x.cotturas, $y, $y.type == '%@'))))",self.title]];
     return tipo.nametype;
 }
 
+-(void)swipeToHome:(XYPieChart *)pieChart{
+    
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.3;
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromLeft;
+    
+    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    
+}
 @end

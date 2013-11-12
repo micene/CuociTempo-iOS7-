@@ -18,15 +18,17 @@
 +(DataManager*)sharedClass;
 -(void)setup;
 
--(NSString*)tempoPerAlimento:(NSPredicate*)predicate;
+-(NSString*)tempoPerAlimento:(NSString*)predicateString;
 
 -(NSManagedObjectContext*)managedObjectContext;
 
 
--(NSInteger)numerodiEntita:(NSString*)className sezione:(NSInteger)sezione predicate:(NSPredicate *)predicate;
--(NSManagedObject*)fetchRequestPerCella:(NSString*)className cell:(unsigned int)cell predicate:(NSPredicate *)predicate;
+//-----------------------------------------
+-(NSInteger)numerodiEntita:(NSString*)className sezione:(NSInteger)sezione predicate:(NSString*)predicateString;
 
+-(NSManagedObject*)fetchRequestPerCella:(NSString*)className cell:(unsigned int)cell predicate:(NSString*)predicateString;
 
+//--------------------
 
 -(NSFetchedResultsController *)fetchedResultsController;
 -(NSFetchedResultsController *)fetchedEntityWithClassName:(NSString *)className
@@ -36,9 +38,9 @@
 
 -(NSInteger)numeroDiSezioni;
 -(NSInteger)numeroDiRighePerSezione:(NSInteger)sezione;
--(NSManagedObject*)configuraPerCella:(NSIndexPath*)cella;
 -(NSString*)nomePerSezione:(NSInteger)sezione;
-//-(void)creaAlimento:(NSString*)nome tipo:(NSString*)typeName cottura:(NSString*)typeCottura tempo:(NSString*)time;
+//-------------------
+-(NSManagedObject*)configuraPerCella:(NSIndexPath*)cella;
 
 
 @end
