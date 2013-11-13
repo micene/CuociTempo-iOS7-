@@ -218,7 +218,7 @@
         transition.subtype = kCATransitionFromLeft;
         
         [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-        [self.navigationController popToRootViewControllerAnimated:NO];
+        [self.navigationController popViewControllerAnimated:NO];
     
 }
 

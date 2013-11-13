@@ -12,6 +12,7 @@
 #import "Tipo.h"
 #import "GNWheelViewController.h"
 
+#define DegreesToRadians(x) (M_PI * x / 180.0)
 
 @implementation ViewController
 
@@ -20,6 +21,19 @@
 @synthesize slices = _slices;
 @synthesize sliceColors = _sliceColors;
 int num;
+//CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
+CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
+
+
+
+CABasicAnimation *makeRotateAnimation(float fromValue, float toValue) {
+	CABasicAnimation *rotate = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+	rotate.fromValue = [NSNumber numberWithFloat:fromValue];
+	rotate.toValue = [NSNumber numberWithFloat:toValue];
+	rotate.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    rotate.speed = 2.0;
+	return rotate;
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -32,30 +46,54 @@ int num;
 - (void)viewDidLoad
 {
     
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToHome:)];
+    
+    [swipe setDirection:UISwipeGestureRecognizerDirectionRight];
+    
+    [self.pieChartRight addGestureRecognizer:swipe];
+    [self.view addGestureRecognizer:swipe];
+    
     [super viewDidLoad];
+    
     num = [[DataManager sharedClass]numerodiEntita:@"Tipo" sezione:0 predicate:[NSString stringWithFormat:@"(0 != SUBQUERY(alimentos, $x, (0 != SUBQUERY($x.cotturas, $y, $y.type == '%@'))))",self.title]];
     
     self.slices = [NSMutableArray arrayWithCapacity:num];
     
-    for(int i = 0; i < 5; i ++)
+    for(int i = 0; i < num; i ++)
     {
-        [_slices addObject:[NSNumber numberWithInt:1]];
+        [_slices addObject:[NSNumber numberWithInt:num]];
     }
     
-    [self.pieChartRight setDelegate:self];
-    [self.pieChartRight setDataSource:self];
-    [self.pieChartRight setPieCenter:CGPointMake(self.pieChartRight.center.x, self.pieChartRight.center.y-50)];
-    [self.pieChartRight setShowPercentage:NO];
-    [self.pieChartRight setLabelColor:[UIColor blackColor]];
+    
 
     
-    self.sliceColors =[NSArray arrayWithObjects:
-                       [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1],
-                       [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1],
-                       [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1],
-                       [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1],
-                       [UIColor colorWithRed:148/255.0 green:141/255.0 blue:139/255.0 alpha:1],nil];
-    //rotate up arrow
+    [self.pieChartRight setDataSource:self];
+    [self.pieChartRight setStartPieAngle:M_PI_2];
+    [self.pieChartRight setAnimationSpeed:1.0];
+    [self.pieChartRight setLabelRadius:100];
+    [self.pieChartRight setShowPercentage:YES];
+    [self.pieChartRight setPieBackgroundColor:[UIColor colorWithWhite:0.95 alpha:1]];
+    [self.pieChartRight setPieCenter:self.pieChartRight.center];
+    [self.pieChartRight setUserInteractionEnabled:YES];
+    [self.pieChartRight setLabelShadowColor:[UIColor blackColor]];
+    [self.pieChartRight setDelegate:self];
+    [self.pieChartRight setShowPercentage:NO];
+    [self.pieChartRight setLabelColor:[UIColor whiteColor]];
+
+    self.sliceColors = [NSArray arrayWithObjects:
+                        [UIColor redColor],
+                        [UIColor blueColor],
+                        [UIColor greenColor],
+                        [UIColor brownColor],
+                        [UIColor yellowColor],
+                        [UIColor grayColor],
+                        [UIColor lightGrayColor],nil];
+    NSLog(@"pie center %f,%f",self.pieChartRight.pieCenter.x,self.pieChartRight.pieCenter.y);
+    NSLog(@"pieRight center %f,%f",self.pieChartRight.center.x,self.pieChartRight.center.y);
+    
+    [self.view addSubview:self.pieChartRight];
+    [self.view addSubview:self.selectedSliceLabel];
+    
 }
 
 - (void)viewDidUnload
@@ -127,13 +165,18 @@ int num;
 
 - (UIColor *)pieChart:(XYPieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index
 {
-    return [self.sliceColors objectAtIndex:(index % self.sliceColors.count)];
+    Tipo *tipo = (Tipo*)[[DataManager sharedClass]fetchRequestPerCella:@"Tipo"
+                                                                  cell:index
+                                                             predicate:[NSString stringWithFormat:@"(0 != SUBQUERY(alimentos, $x, (0 != SUBQUERY($x.cotturas, $y, $y.type == '%@'))))",self.title]];
+
+    return [self.sliceColors objectAtIndex:([tipo.tipoid intValue]-1)];
 }
 
 #pragma mark - XYPieChart Delegate
 - (void)pieChart:(XYPieChart *)pieChart willSelectSliceAtIndex:(NSUInteger)index
 {
     NSLog(@"will select slice at index %d",index);
+
 }
 - (void)pieChart:(XYPieChart *)pieChart willDeselectSliceAtIndex:(NSUInteger)index
 {
@@ -145,11 +188,31 @@ int num;
 }
 - (void)pieChart:(XYPieChart *)pieChart didSelectSliceAtIndex:(NSUInteger)index
 {
+
     NSLog(@"did select slice at index %d",index);
     self.selectedSliceLabel.text = [self pieChart:pieChart textForSliceAtIndex:index];
-    GNWheelViewController *wheel = [self.storyboard instantiateViewControllerWithIdentifier:@"Wheel"];
-    wheel.title = self.selectedSliceLabel.text;
-    [self.navigationController pushViewController:wheel animated:NO];
+
+    for (CALayer *sub in self.pieChartRight.layer.sublayers) {
+        CABasicAnimation *rotate = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+        rotate.fromValue = [NSNumber numberWithFloat:0];
+        rotate.toValue = [NSNumber numberWithFloat:2*M_PI];
+        rotate.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        rotate.speed = 1;
+        rotate.duration = 3.0;
+        rotate.delegate = self;
+        [sub addAnimation:rotate forKey:@"transform.rotation"];
+    }
+}
+
+//qnd si ferma l'animazione
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+            GNWheelViewController *wheel = [self.storyboard instantiateViewControllerWithIdentifier:@"Wheel"];
+            wheel.title = self.selectedSliceLabel.text;
+            CATransition* transition = [CATransition animation];
+            transition.duration = 0.6;
+            transition.type = kCATransitionFade;
+            [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+            [self.navigationController pushViewController:wheel animated:NO];
 }
 
 -(NSString *)pieChart:(XYPieChart *)pieChart textForSliceAtIndex:(NSUInteger)index{
@@ -159,9 +222,22 @@ int num;
     return tipo.nametype;
 }
 
--(void)swipeToHome:(XYPieChart *)pieChart{
+/*-(void)swipeToHome:(XYPieChart *)pieChart{
     
     CATransition* transition = [CATransition animation];
+    transition.duration = 0.3;
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromLeft;
+    
+    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    
+}*/
+-(void)swipeToHome:(UISwipeGestureRecognizer *)sender{
+    
+    CATransition* transition = [CATransition animation];
+    transition.timeOffset = CACurrentMediaTime() +10;
+    transition.fillMode = kCAFillModeBackwards;
     transition.duration = 0.3;
     transition.type = kCATransitionPush;
     transition.subtype = kCATransitionFromLeft;

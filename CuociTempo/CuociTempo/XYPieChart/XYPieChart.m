@@ -158,7 +158,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         _showLabel = YES;
         _showPercentage = YES;
         
-        UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToBack)];
+        UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToBack:)];
         
         [swipe setDirection:UISwipeGestureRecognizerDirectionRight];
         
@@ -266,11 +266,6 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
 {
     if (_dataSource)
     {
-        UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToBack:)];
-        
-        [swipe setDirection:UISwipeGestureRecognizerDirectionRight];
-        
-        [self addGestureRecognizer:swipe];
         
         CALayer *parentLayer = [_pieView layer];
         NSArray *slicelayers = [parentLayer sublayers];
@@ -596,14 +591,6 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
                     [_delegate pieChart:self didSelectSliceAtIndex:newSelection];
             }
         }
-    }
-}
-
--(void)swipeToBack:(UISwipeGestureRecognizer*)sender{
-    
-    if ([_delegate respondsToSelector:@selector(swipeToHome:)]) {
-        
-        [_delegate swipeToHome:self];
     }
 }
 
