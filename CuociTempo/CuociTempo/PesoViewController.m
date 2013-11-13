@@ -12,12 +12,11 @@
 @interface PesoViewController ()
 {
     int peso;
-    NSString* cottura;
 }
 @end
 
-
 @implementation PesoViewController
+@synthesize cottura;
 
 - (void)viewDidLoad
 {

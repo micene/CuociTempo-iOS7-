@@ -20,20 +20,10 @@
 @synthesize selectedSliceLabel = _selectedSlice;
 @synthesize slices = _slices;
 @synthesize sliceColors = _sliceColors;
+@synthesize fetchObject = _fetchObject;
+
 int num;
-//CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
-CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
-
-
-CABasicAnimation *makeRotateAnimation(float fromValue, float toValue) {
-	CABasicAnimation *rotate = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-	rotate.fromValue = [NSNumber numberWithFloat:fromValue];
-	rotate.toValue = [NSNumber numberWithFloat:toValue];
-	rotate.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    rotate.speed = 2.0;
-	return rotate;
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -46,16 +36,13 @@ CABasicAnimation *makeRotateAnimation(float fromValue, float toValue) {
 - (void)viewDidLoad
 {
     
-    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToHome:)];
-    
-    [swipe setDirection:UISwipeGestureRecognizerDirectionRight];
-    
-    [self.pieChartRight addGestureRecognizer:swipe];
-    [self.view addGestureRecognizer:swipe];
+    NSLog(@"title %@",self.title);
     
     [super viewDidLoad];
+
+    self.fetchObject = [[DataManager sharedClass]fetchaRequest:@"Tipo" predicate:[NSString stringWithFormat:@"(0 != SUBQUERY(alimentos, $x, (0 != SUBQUERY($x.cotturas, $y, $y.type == '%@'))))",self.title]];
     
-    num = [[DataManager sharedClass]numerodiEntita:@"Tipo" sezione:0 predicate:[NSString stringWithFormat:@"(0 != SUBQUERY(alimentos, $x, (0 != SUBQUERY($x.cotturas, $y, $y.type == '%@'))))",self.title]];
+    num = [[DataManager sharedClass]numerodiEntitaFromFetch:self.fetchObject sezione:0];
     
     self.slices = [NSMutableArray arrayWithCapacity:num];
     
@@ -63,9 +50,6 @@ CABasicAnimation *makeRotateAnimation(float fromValue, float toValue) {
     {
         [_slices addObject:[NSNumber numberWithInt:num]];
     }
-    
-    
-
     
     [self.pieChartRight setDataSource:self];
     [self.pieChartRight setStartPieAngle:M_PI_2];
@@ -88,8 +72,13 @@ CABasicAnimation *makeRotateAnimation(float fromValue, float toValue) {
                         [UIColor yellowColor],
                         [UIColor grayColor],
                         [UIColor lightGrayColor],nil];
-    NSLog(@"pie center %f,%f",self.pieChartRight.pieCenter.x,self.pieChartRight.pieCenter.y);
-    NSLog(@"pieRight center %f,%f",self.pieChartRight.center.x,self.pieChartRight.center.y);
+    
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToHome:)];
+    
+    [swipe setDirection:UISwipeGestureRecognizerDirectionRight];
+    
+    //[self.pieChartRight addGestureRecognizer:swipe];
+    [self.view addGestureRecognizer:swipe];
     
     [self.view addSubview:self.pieChartRight];
     [self.view addSubview:self.selectedSliceLabel];
@@ -165,9 +154,7 @@ CABasicAnimation *makeRotateAnimation(float fromValue, float toValue) {
 
 - (UIColor *)pieChart:(XYPieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index
 {
-    Tipo *tipo = (Tipo*)[[DataManager sharedClass]fetchRequestPerCella:@"Tipo"
-                                                                  cell:index
-                                                             predicate:[NSString stringWithFormat:@"(0 != SUBQUERY(alimentos, $x, (0 != SUBQUERY($x.cotturas, $y, $y.type == '%@'))))",self.title]];
+    Tipo *tipo =  (Tipo*)[[DataManager sharedClass]managedObjectFromFetch:self.fetchObject cell:index];
 
     return [self.sliceColors objectAtIndex:([tipo.tipoid intValue]-1)];
 }
@@ -196,10 +183,10 @@ CABasicAnimation *makeRotateAnimation(float fromValue, float toValue) {
         CABasicAnimation *rotate = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
         rotate.fromValue = [NSNumber numberWithFloat:0];
         rotate.toValue = [NSNumber numberWithFloat:2*M_PI];
-        rotate.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-        rotate.speed = 1;
+        rotate.speed = 2;
         rotate.duration = 3.0;
         rotate.delegate = self;
+        rotate.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
         [sub addAnimation:rotate forKey:@"transform.rotation"];
     }
 }
@@ -208,6 +195,8 @@ CABasicAnimation *makeRotateAnimation(float fromValue, float toValue) {
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
             GNWheelViewController *wheel = [self.storyboard instantiateViewControllerWithIdentifier:@"Wheel"];
             wheel.title = self.selectedSliceLabel.text;
+            wheel.cottura = self.title;
+    
             CATransition* transition = [CATransition animation];
             transition.duration = 0.6;
             transition.type = kCATransitionFade;
@@ -216,28 +205,15 @@ CABasicAnimation *makeRotateAnimation(float fromValue, float toValue) {
 }
 
 -(NSString *)pieChart:(XYPieChart *)pieChart textForSliceAtIndex:(NSUInteger)index{
-    Tipo *tipo = (Tipo*)[[DataManager sharedClass]fetchRequestPerCella:@"Tipo"
-                                                                  cell:index
-                                                      predicate:[NSString stringWithFormat:@"(0 != SUBQUERY(alimentos, $x, (0 != SUBQUERY($x.cotturas, $y, $y.type == '%@'))))",self.title]];
+    
+    Tipo *tipo = (Tipo*)[[DataManager sharedClass]managedObjectFromFetch:self.fetchObject cell:index];
+    
     return tipo.nametype;
 }
 
-/*-(void)swipeToHome:(XYPieChart *)pieChart{
-    
-    CATransition* transition = [CATransition animation];
-    transition.duration = 0.3;
-    transition.type = kCATransitionPush;
-    transition.subtype = kCATransitionFromLeft;
-    
-    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-    [self.navigationController popToRootViewControllerAnimated:NO];
-    
-}*/
 -(void)swipeToHome:(UISwipeGestureRecognizer *)sender{
     
     CATransition* transition = [CATransition animation];
-    transition.timeOffset = CACurrentMediaTime() +10;
-    transition.fillMode = kCAFillModeBackwards;
     transition.duration = 0.3;
     transition.type = kCATransitionPush;
     transition.subtype = kCATransitionFromLeft;
@@ -246,4 +222,5 @@ CABasicAnimation *makeRotateAnimation(float fromValue, float toValue) {
     [self.navigationController popToRootViewControllerAnimated:NO];
     
 }
+
 @end

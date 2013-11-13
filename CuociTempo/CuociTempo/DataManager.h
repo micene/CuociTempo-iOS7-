@@ -18,17 +18,12 @@
 +(DataManager*)sharedClass;
 -(void)setup;
 
--(NSString*)tempoPerAlimento:(NSString*)predicateString;
 
 -(NSManagedObjectContext*)managedObjectContext;
 
-
 //-----------------------------------------
--(NSInteger)numerodiEntita:(NSString*)className sezione:(NSInteger)sezione predicate:(NSString*)predicateString;
 
--(NSManagedObject*)fetchRequestPerCella:(NSString*)className cell:(unsigned int)cell predicate:(NSString*)predicateString;
-
-//--------------------
+//METODI FETCHRESULTCONTROLLER
 
 -(NSFetchedResultsController *)fetchedResultsController;
 -(NSFetchedResultsController *)fetchedEntityWithClassName:(NSString *)className
@@ -39,8 +34,18 @@
 -(NSInteger)numeroDiSezioni;
 -(NSInteger)numeroDiRighePerSezione:(NSInteger)sezione;
 -(NSString*)nomePerSezione:(NSInteger)sezione;
-//-------------------
 -(NSManagedObject*)configuraPerCella:(NSIndexPath*)cella;
 
+//-------------------
+
+//METODI FETCHREQUEST
+
+-(NSArray*)fetchaRequest:(NSString*)className predicate:(NSString*)predicateString;
+
+-(NSManagedObject*)managedObjectFromFetch:(NSArray*)fetchedObject cell:(unsigned int)cell;
+
+-(NSInteger)numerodiEntitaFromFetch:(NSArray*)fetchedObject sezione:(NSInteger)sezione;
+
+-(NSString*)tempoPerAlimento:(NSString*)predicateString;
 
 @end

@@ -32,13 +32,10 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-@interface GNWheelViewController ()
-
-
-@end
-
 @implementation GNWheelViewController
 
+@synthesize fetchObject = _fetchObject;
+@synthesize cottura;
 
 //iniziallizzo la view
 - (GNWheelView *)wheelView{
@@ -73,6 +70,10 @@
     
     [UIView commitAnimations];*/
     
+    NSLog(@"cottura %@",self.cottura);
+    
+    self.fetchObject = [[DataManager sharedClass]fetchaRequest:@"Alimento" predicate:[NSString stringWithFormat:@"(0 != SUBQUERY(tipo,$x,$x.nametype == '%@')) AND (0 != SUBQUERY(cotturas,$y,$y.type == '%@'))",self.title,self.cottura]];
+    
 }
 
 //qnd la view e connessa
@@ -84,20 +85,6 @@
     
     [self.wheelView reloadData];
 }
-
-//qnd si ferma l'animazione
-/*- (void)animationDidStop:(NSString *)animationID
-                finished:(NSNumber *)finished
-                 context:(void *)context {
-
-    //se l animazione dell imageview e' finita allora mostro la ruota
-    if([animationID isEqualToString:@"fadeIn"]){
-        
-        [self.wheelView reloadData];
-        
-    }
-}*/
-
 
 - (void)viewDidUnload
 {
@@ -114,19 +101,15 @@
 
 //numero di righe
 - (unsigned int)numberOfRowsOfWheelView:(GNWheelView *)wheelView{
-    NSString *cottura = @"Microonde";
-
-    NSLog(@"numero di oggetti %i",[[DataManager sharedClass]numerodiEntita:@"Alimento" sezione:0 predicate:[NSString stringWithFormat:@"(0 != SUBQUERY(tipo,$x,$x.nametype == '%@') AND (0 != SUBQUERY(cotturas,$y,$y.type == '%@')))",self.title,cottura]]);
-    return [[DataManager sharedClass]numerodiEntita:@"Alimento" sezione:0 predicate:[NSString stringWithFormat:@"(0 != SUBQUERY(tipo,$x,$x.nametype == '%@') AND (0 != SUBQUERY(cotturas,$y,$y.type == '%@')))",self.title,cottura]];
     
-
+    return [[DataManager sharedClass]numerodiEntitaFromFetch:self.fetchObject sezione:0];
+    
 }
 
 //cella che appare
 - (UIView *)wheelView:(GNWheelView *)wheelView viewForRowAtIndex:(unsigned int)index{
-   
-    NSString*cottura =@"Microonde";
-    Alimento *alimento = (Alimento*)[[DataManager sharedClass]fetchRequestPerCella:@"Alimento" cell:index predicate:[NSString stringWithFormat:@"(0 != SUBQUERY(tipo,$x,$x.nametype == '%@') AND (0 != SUBQUERY(cotturas,$y,$y.type == '%@')))",self.title,cottura]];
+    
+    Alimento *alimento =(Alimento*)[[DataManager sharedClass]managedObjectFromFetch:self.fetchObject cell:index];
     
     UILabel *label = [[UILabel alloc]initWithFrame:wheelView.frame];
     
@@ -137,19 +120,19 @@
 }
 
 //qnd seleziono una cella
-/*- (void)wheelView:(GNWheelView *)wheelView didSelectedRowAtIndex:(unsigned int)index{
+- (void)wheelView:(GNWheelView *)wheelView didSelectedRowAtIndex:(unsigned int)index{
     
-    Alimento *alimento = (Alimento*)[[DataManager sharedClass]fetchRequestPerCella:@"Alimento" cell:index predicate:[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"ANY cotturas.type == '%@'",self.title]]];
+    Alimento *alimento = (Alimento*)[[DataManager sharedClass]managedObjectFromFetch:self.fetchObject cell:index];
     
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"ThirdStoryboard" bundle:nil];
 
-    if([self.title isEqualToString:@"Microonde"]){
+    if([self.cottura isEqualToString:@"Microonde"]){
         
         
         PesoViewController *peso = [storyBoard instantiateViewControllerWithIdentifier:@"PesoView"];
         
         peso.title = alimento.name;
-        peso.cottura = self.title;
+        peso.cottura = self.cottura;
 
         
         [self.navigationController pushViewController:peso animated:NO];
@@ -159,13 +142,13 @@
         TimerViewController *timer = [storyBoard instantiateViewControllerWithIdentifier:@"TimerView"];
         
         timer.title = alimento.name;
-        timer.cottura = self.title;
+        timer.cottura = self.cottura;
         
         [self.navigationController pushViewController:timer animated:NO];
         
     }
     
-}*/
+}
 
 //-------------------------------------
 

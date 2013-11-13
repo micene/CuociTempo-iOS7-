@@ -29,7 +29,6 @@
 {
     [super viewDidLoad];
     
-    
     NSLog(@"peso %i",self.peso);
     NSLog(@"cottura %@",self.cottura);
     

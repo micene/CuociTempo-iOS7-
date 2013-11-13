@@ -28,4 +28,7 @@
 
 @interface GNWheelViewController : UIViewController <GNWheelViewDelegate>
 
+@property (nonatomic,strong)NSArray *fetchObject;
+@property (nonatomic,retain)NSString *cottura;
+
 @end

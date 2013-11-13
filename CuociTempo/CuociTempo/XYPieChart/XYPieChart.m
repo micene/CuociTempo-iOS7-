@@ -157,12 +157,6 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         
         _showLabel = YES;
         _showPercentage = YES;
-        
-        UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToBack:)];
-        
-        [swipe setDirection:UISwipeGestureRecognizerDirectionRight];
-        
-        [self addGestureRecognizer:swipe];
     }
     
     return self;
