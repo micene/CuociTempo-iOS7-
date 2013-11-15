@@ -29,10 +29,12 @@
 #import "DataManager.h"
 #import "Alimento.h"
 #import "TimerViewController.h"
-
 #import <QuartzCore/QuartzCore.h>
 
+static NSString *cott;
+
 @implementation GNWheelViewController
+
 
 @synthesize fetchObject = _fetchObject;
 @synthesize cottura;

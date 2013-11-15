@@ -24,9 +24,10 @@
 {
     [super viewDidLoad];
     
-    NSFetchedResultsController *fRC = [[DataManager sharedClass]fetchedEntityWithClassName:@"Alimento" sortDescriptorWithKey:@"name" sectionNameKeyPath:nil setPredicate:[NSPredicate predicateWithFormat:@"(0 != SUBQUERY(tipo, $x,$x.nametype == %@))",self.title]];
+    NSFetchedResultsController *fRC = [[DataManager sharedClass]fetchedEntityWithClassName:@"Alimento" sortDescriptorWithKey:@"tipo.nametype" sectionNameKeyPath:@"tipo.nametype" setPredicate:[NSPredicate predicateWithFormat:@"ANY self.cotturas.type == %@",self.title]];
     
     NSError *error;
+
     if(![fRC performFetch:&error]){
         NSLog(@"%@ %@",error,[error userInfo]);
     }
@@ -36,8 +37,6 @@
     [self.tableView addGestureRecognizer:self.swipeToBack];
     
 }
-
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -111,8 +110,6 @@
     }
 }
 
-
-
 -(void)back:(UISwipeGestureRecognizer*)sender{
     
     CATransition* transition = [CATransition animation];
@@ -146,6 +143,7 @@
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
 {
+
     UITableView *tableView = self.tableView;
     
     switch(type) {
@@ -190,8 +188,6 @@
     // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
     [self.tableView endUpdates];
 }
-
-
 
 /*
 // Override to support editing the table view.

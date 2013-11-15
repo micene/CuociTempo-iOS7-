@@ -105,10 +105,7 @@ static DataManager* sharedClassInstance = nil;
 
 -(NSFetchedResultsController *)fetchedEntityWithClassName:(NSString *)className sortDescriptorWithKey:(NSString *)sortDescriptors sectionNameKeyPath:(NSString *)sectionNameKeypath setPredicate:(NSPredicate *)predicate{
     
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
-    }
-    
+    [NSFetchedResultsController deleteCacheWithName:@"Root"];
     
     NSFetchRequest *fethcRequest = [NSFetchRequest fetchRequestWithEntityName:className];
     
@@ -118,7 +115,7 @@ static DataManager* sharedClassInstance = nil;
     
     NSFetchedResultsController *aFetchResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fethcRequest managedObjectContext:[self managedObjectContext]  sectionNameKeyPath:sectionNameKeypath cacheName:@"Root"];
     
-    _fetchedResultsController.delegate = self;
+    aFetchResultsController.delegate = self;
         
     _fetchedResultsController = aFetchResultsController;
     

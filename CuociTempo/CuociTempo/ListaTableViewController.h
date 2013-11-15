@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ListaTableViewController : UITableViewController<NSFetchedResultsControllerDelegate>
+@interface ListaTableViewController : UITableViewController
+
 @property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeToBack;
 
 @end

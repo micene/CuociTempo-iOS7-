@@ -11,6 +11,7 @@
 #import "DataManager.h"
 #import "Tipo.h"
 #import "GNWheelViewController.h"
+#import "PesoViewController.h"
 
 #define DegreesToRadians(x) (M_PI * x / 180.0)
 
@@ -193,15 +194,34 @@ int num;
 
 //qnd si ferma l'animazione
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
-            GNWheelViewController *wheel = [self.storyboard instantiateViewControllerWithIdentifier:@"Wheel"];
-            wheel.title = self.selectedSliceLabel.text;
-            wheel.cottura = self.title;
     
-            CATransition* transition = [CATransition animation];
-            transition.duration = 0.6;
-            transition.type = kCATransitionFade;
-            [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-            [self.navigationController pushViewController:wheel animated:NO];
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.6;
+    transition.type = kCATransitionFade;
+    
+    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+    [self.navigationController pushViewController:[self whereFinished:self.selectedSliceLabel.text] animated:NO];
+    
+}
+
+-(UIViewController*)whereFinished:(NSString*)sliceName {
+    
+    UIViewController *viewController;
+    
+    if([sliceName isEqualToString:@"Uova"] || ([sliceName isEqualToString:@"Frutta"] && [self.title isEqualToString:@"Microonde"])){
+       
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"ThirdStoryboard" bundle:nil];
+       
+        viewController =(PesoViewController*)[sb instantiateViewControllerWithIdentifier:@"PesoView"];
+        viewController.title = sliceName;
+        
+    }else{
+        
+        viewController = (GNWheelViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"Wheel"];
+        viewController.title = sliceName;
+        
+    }
+    return viewController;
 }
 
 -(NSString *)pieChart:(XYPieChart *)pieChart textForSliceAtIndex:(NSUInteger)index{

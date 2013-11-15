@@ -26,6 +26,7 @@
 //METODI FETCHRESULTCONTROLLER
 
 -(NSFetchedResultsController *)fetchedResultsController;
+
 -(NSFetchedResultsController *)fetchedEntityWithClassName:(NSString *)className
                                   sortDescriptorWithKey:(NSString *)sortDescriptors
                                      sectionNameKeyPath:(NSString *)sectionNameKeypath

@@ -137,9 +137,8 @@
         __view.backgroundColor = color;
         
         //BOTTONE PER LISTA
-        self.lista = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 50)];
+        self.lista = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
         [self.lista addTarget:self action:@selector(goToLista:) forControlEvents:UIControlEventTouchUpInside];
-        self.lista.backgroundColor = [UIColor yellowColor];
         [self.lista setTitle:@"Lista" forState:UIControlStateNormal];
         
         [self addSubview:self.lista];

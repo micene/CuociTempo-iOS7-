@@ -36,7 +36,7 @@
 - (IBAction)pressionePushed:(UIButton*)sender {
     
     
-    //PressioneViewController *pressione = [self.storyboard instantiateViewControllerWithIdentifier:@"Pressione"];
+    //TypePageViewController *pressione = [self.storyboard instantiateViewControllerWithIdentifier:@"Pressione"];
     GNWheelViewController *wheel = [self.storyboard instantiateViewControllerWithIdentifier:@"Wheel"];
     wheel.title = [sender currentTitle];
     CATransition* transition = [CATransition animation];
