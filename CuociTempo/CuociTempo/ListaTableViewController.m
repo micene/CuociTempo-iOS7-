@@ -13,8 +13,13 @@
 #import "TimerViewController.h"
 #import "PesoViewController.h"
 
-@interface ListaTableViewController ()
+@interface ListaTableViewController (){
 
+    UIAlertView * alert;
+    BOOL isRunning;
+    Alimento *a;
+
+}
 @end
 
 @implementation ListaTableViewController
@@ -95,30 +100,63 @@
         peso.title = alimento.name;
         peso.cottura = self.title;
         
-        
         [self.navigationController pushViewController:peso animated:NO];
         
     }else{
+        if(!self.timer){
+            self.timer = [storyBoard instantiateViewControllerWithIdentifier:@"TimerView"];
+            self.timer.title = alimento.name;
+            self.timer.cottura = self.title;
+            self.timer.tempo = (Tempo*)[[DataManager sharedClass]tempoPerAlimento:[NSString stringWithFormat:@"cottura.type == '%@' AND alimento.name == '%@'",self.title,self.timer.title]];
         
-        TimerViewController *timer = [storyBoard instantiateViewControllerWithIdentifier:@"TimerView"];
-        
-        timer.title = alimento.name;
-        timer.cottura = self.title;
-        
-        [self.navigationController pushViewController:timer animated:NO];
+            [self.navigationController pushViewController:self.timer animated:NO];
+        }else{
+            alert = [[UIAlertView alloc] initWithTitle:@"Alert1" //titolo bottone
+                                               message:@"Timer Gia Avviato! Avviarne un altro?"  //messagio dato dal bottone
+                                              delegate:self  //assegno a ql delegato deve lavorare          -----> FASE 2
+                                     cancelButtonTitle:@"Cancella" //bottone negativo indice 0
+                                     otherButtonTitles:@"Avvia",nil];
+            a = alimento;
+             //lancio il metodo show
+            [alert show];
+        }
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSLog(@"ho toccato %i",buttonIndex);
+    if(alertView == alert) {  //controlliamo ql alert e stata scatenata
+        switch (buttonIndex) {
+            case 0:
+                break;
+            case 1:
+                self.timer = [[UIStoryboard storyboardWithName:@"ThirdStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"TimerView"];
+                self.timer.title = a.name;
+                self.timer.cottura = self.title;
+                [self.navigationController pushViewController:self.timer animated:NO];
+
+                self.timer.tempo = (Tempo*)[[DataManager sharedClass]tempoPerAlimento:[NSString stringWithFormat:@"cottura.type == '%@' AND alimento.name == '%@'",self.title,self.timer.title]];
+                break;
+            default:
+                break;
+        }
         
     }
 }
 
 -(void)back:(UISwipeGestureRecognizer*)sender{
+
     
     CATransition* transition = [CATransition animation];
     transition.duration = 0.3;
     transition.type = kCATransitionPush;
     transition.subtype = kCATransitionFromLeft;
-    
+    if (sender.state == UIGestureRecognizerStateChanged) {
+        NSLog(@"a");
+    }
     [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
     [self.navigationController popViewControllerAnimated:NO];
+ 
     
 }
 
@@ -189,46 +227,5 @@
     [self.tableView endUpdates];
 }
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

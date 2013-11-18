@@ -8,22 +8,19 @@
 
 #import "TimerViewController.h"
 #import "DataManager.h"
+#import "Tempo.h"
 
 @interface TimerViewController ()
 {
-    //creiamo un bool che serve per sapere se il conto alla rovescia sta andando
-    BOOL isRunning;
-    
     //Creiamo un variabile intera che useremo come contatore
     int countdown;
-    
-    NSString *ris;
-    
+    BOOL isRunning;
 }
 @end
 
 @implementation TimerViewController
 
+@synthesize tempo = _tempo;
 
 - (void)viewDidLoad
 {
@@ -32,23 +29,9 @@
     NSLog(@"peso %i",self.peso);
     NSLog(@"cottura %@",self.cottura);
     
-    if([self.cottura isEqualToString:@"Microonde"]){
-        ris = [[DataManager sharedClass]tempoPerAlimento:[NSString stringWithFormat:@"cottura.type == 'Microonde' AND alimento.name == '%@' AND peso.pesoid = %i",self.title,(self.peso + 1)]];
-    }else{
-        ris = [[DataManager sharedClass]tempoPerAlimento:[NSString stringWithFormat:@"cottura.type == '%@' AND alimento.name == '%@'",self.cottura,self.title]];
-    }
-    
-    //Mettiamo isRunning su no perché il timer è fermo
-    isRunning = NO;
-    
-    //diamo un valore iniziale alla primitiva
-    countdown = ris.doubleValue* 60;
-	// Do any additional setup after loading the view.
-    
+    countdown = self.tempo.time.doubleValue*60;
     
     self.countdownLabel.text = [self formattazioneLabel];
-    
-    NSLog(@"name:%@ tempo:%@",self.title,ris);
     
     self.swipeToBack = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back:)];
     [self.swipeToBack setDirection:(UISwipeGestureRecognizerDirectionRight)];
@@ -57,22 +40,19 @@
 }
 
 - (IBAction)start:(id)sender {
-    
     //controllo se sta gia andando e se si impedisco l'esecuzione del resto del codice
     if (isRunning) return;
     
-    
     //Impostiamo su si il booleano isRunning
     isRunning = YES;
-    
     
     //Invochiamo il primo tick
     [self spin];
     
     //Avviamo la data con il metodo scheduledTimerWithTimeInterval che ogni secondo invoca il metodo tick
     self.theTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
-}
 
+}
 
 - (IBAction)stop:(id)sender {
     
@@ -82,7 +62,7 @@
     
     //Impostiamo no il boolenao isRunning
     isRunning = NO;
-    countdown = ris.doubleValue*60;
+    countdown = self.tempo.time.doubleValue*60;
 
     
     [self.lancetta.layer removeAllAnimations];
@@ -92,13 +72,14 @@
     
     //Assegnamo alla proprietà text della UILabel la stringa restituita dal metodo formattazioneLabel
     self.countdownLabel.text = [self formattazioneLabel];
+    
 
 }
 
 - (NSString*)formattazioneLabel {
     
     //creo 3 numeri interi con la matematica necessaria per calcolare secondi, minuti e ore
-	int hours = (countdown / 3600);
+    int hours = (countdown / 3600);
 	int minutes = ((countdown / 60) - hours * 60);
 	int seconds = (countdown - ((minutes * 60) + hours * 3600));
     
@@ -128,13 +109,11 @@
         self.countdownLabel.text = @"00:00:00";
         
         //Arrstiamo il codice
-        return;
+        return ;
     }
     
     //Assegnamo alla proprietà text della UILabel la stringa restituita dal metodo formattazioneLabel
-	self.countdownLabel.text = [self formattazioneLabel];
-
-
+    self.countdownLabel.text = [self formattazioneLabel];
 }
 
 - (void)spin {
@@ -170,9 +149,10 @@
     transition.duration = 0.3;
     transition.type = kCATransitionPush;
     transition.subtype = kCATransitionFromLeft;
-    
+
     [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
     [self.navigationController popViewControllerAnimated:NO];
     
 }
+
 @end

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class Alimento,Cottura;
+@class Alimento,Cottura,Tempo;
 
 @interface DataManager : NSObject<NSFetchedResultsControllerDelegate>
 
@@ -47,6 +47,6 @@
 
 -(NSInteger)numerodiEntitaFromFetch:(NSArray*)fetchedObject sezione:(NSInteger)sezione;
 
--(NSString*)tempoPerAlimento:(NSString*)predicateString;
+-(NSManagedObject*)tempoPerAlimento:(NSString*)predicateString;
 
 @end

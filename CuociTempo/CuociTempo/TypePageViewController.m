@@ -10,6 +10,7 @@
 #import "ViewController.h"
 #import "ListaTableViewController.h"
 
+
 @implementation TypePageViewController
 
     NSMutableArray *imagesArr;
@@ -46,6 +47,11 @@
     }
     
     self.pressioneImage.image = [self.images objectAtIndex:0];
+    
+    self.swipeTimer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeToTimer:)];
+    [self.swipeTimer setDirection:UISwipeGestureRecognizerDirectionUp];
+    [self.view addGestureRecognizer:self.swipeTimer];
+    
 
 }
 
@@ -55,7 +61,8 @@
     
     stopRequested = NO;
     currentImage = 0;
-    duration = 0.9/self.images.count+1;
+    duration = 1/self.images.count+1;
+    NSLog(@"%f",duration);
     [self stepThroughImages];
     
     [self performSelector:@selector(stopTheAnimation) withObject:nil afterDelay:4.0];
@@ -86,7 +93,6 @@
         });
     }
 }
-
 
 -(void) stopTheAnimation {
     
@@ -135,6 +141,9 @@
     
 }
 
-
+-(void)swipeToTimer:(UISwipeGestureRecognizer*)sender{
+    
+        NSLog(@"swipe controller not found");
+}
 
 @end

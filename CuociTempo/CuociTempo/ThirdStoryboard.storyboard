@@ -85,7 +85,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="start:" destination="CsQ-FS-AH4" eventType="touchUpInside" id="fCJ-53-JCa"/>
+                                    <action selector="start:" destination="CsQ-FS-AH4" eventType="touchUpInside" id="fCG-vn-qyx"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bpj-7f-6k3">

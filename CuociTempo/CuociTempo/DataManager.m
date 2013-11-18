@@ -83,7 +83,7 @@ static DataManager* sharedClassInstance = nil;
     return fetchedObject.count;
 }
 
--(NSString*)tempoPerAlimento:(NSString*)predicateString{
+-(NSManagedObject*)tempoPerAlimento:(NSString*)predicateString{
     
     NSManagedObjectContext *context = [self managedObjectContext];
     
@@ -92,13 +92,13 @@ static DataManager* sharedClassInstance = nil;
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:nil];
 
     NSLog(@"count %i",fetchedObjects.count);
-    NSLog(@"Tempo %@",[fetchedObjects lastObject]);
+    //NSLog(@"Tempo %@",[fetchedObjects lastObject]);
     for (Tempo *tempo in fetchedObjects) {
         NSLog(@"Tempo :%@",tempo.time);
      }
-    Tempo *tempo = [fetchedObjects lastObject];
+    Tempo *tempo = (Tempo*)[fetchedObjects lastObject];
     
-    return tempo.time;
+    return tempo;
 }
 
 //METODI FETCHEDRESULTCONTROLLER

@@ -18,6 +18,7 @@
 @implementation PesoViewController
 @synthesize cottura;
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

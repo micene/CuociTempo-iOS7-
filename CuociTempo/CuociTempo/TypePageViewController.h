@@ -21,5 +21,6 @@
 @property (retain,nonatomic)NSString *animationForKey;
 @property (retain,nonatomic)NSMutableArray *images;
 
+@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeTimer;
 
 @end

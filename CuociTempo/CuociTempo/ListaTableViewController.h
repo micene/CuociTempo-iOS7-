@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TimerViewController.h"
 
-@interface ListaTableViewController : UITableViewController
+@interface ListaTableViewController : UITableViewController<UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeToBack;
-
+@property (strong,nonatomic) TimerViewController *timer;
 @end
